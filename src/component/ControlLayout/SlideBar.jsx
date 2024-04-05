@@ -4,6 +4,7 @@ import "./SlideBar.css";
 import { SlideBarData } from "./data/Data";
 import { UilBars } from "@iconscout/react-unicons";
 import { motion } from "framer-motion";
+import EmployeeTable from "../EmployeeBenefits/EmployeeBenefits";
 
 const SlideBar = () => {
     const [selected, setSelected] = useState(0);
@@ -53,6 +54,9 @@ const SlideBar = () => {
 
                     </div>
                 </motion.div>
+                {/* Render the selected component */}
+                {selected === 4 && <EmployeeTable />}
+
             </div>
         </>
     );
