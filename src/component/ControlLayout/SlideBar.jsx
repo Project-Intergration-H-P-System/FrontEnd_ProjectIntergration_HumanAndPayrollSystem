@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./SlideBar.css";
 import Logo from "../../assets/image/logo.png";
 import { SlideBarData } from "./data/Data";
 import { UilBars } from "@iconscout/react-unicons";
 import { motion } from "framer-motion";
-// import EmployeeTable from "../EmployeeBenefits/EmployeeBenefits";
+import EmployeeTable from "../EmployeeBenefits/EmployeeBenefits";
 
 const SlideBar = () => {
     const [selected, setSelected] = useState(0);
@@ -32,7 +32,7 @@ const SlideBar = () => {
                 >
                     {/* logo */}
                     <div >
-                        <img src={Logo} alt="logo" width="250" height="200" style={{ marginTop: "-100px", marginBottom: "-100px" }} />
+                        <img src={Logo} alt="logo" width="250" height="200" style={{ marginTop: "-300px", marginBottom: "-100px", marginLeft: '-20px' }} />
                     </div>
 
                     <div className="menu">
@@ -52,7 +52,7 @@ const SlideBar = () => {
                     </div>
                 </motion.div>
                 {/* Render the selected component */}
-                {/* {selected === 4 && <EmployeeTable />} */}
+                {selected === 4 && <EmployeeTable />}
 
             </div>
         </>
