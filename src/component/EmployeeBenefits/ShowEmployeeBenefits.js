@@ -8,7 +8,7 @@ const ShowEmployeeBenefits = ({ data }) => {
                 <thead>
                     <tr>
                         <th>Name</th>
-                        <th>SharehoderStatus</th>
+                        <th>Sharehoder Status</th>
                         <th>Gender</th>
                         <th>Ethnic</th>
                         <th>Employment Status</th>

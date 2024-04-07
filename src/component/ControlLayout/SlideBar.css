@@ -6,6 +6,11 @@
   transition: all 300ms ease;
   top: 0;
   left: 0;
+  /* background-color: #5A57FF;  */
+  background: #ffe0e0;
+  height: 680px;
+  border-radius: 2rem;
+  width: 18%;
   
 }
 /* logo */
@@ -49,7 +54,7 @@
   position: relative;
   transition: all 300ms ease;
   border-radius: 0.7rem;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .menuItem:hover {
@@ -57,14 +62,14 @@
 }
 
 .active {
-  background: var(--activeItem);
+  background: #ce81a454;
   margin-left: 0;
 }
 .active::before {
   content: "";
   width: 8px;
   height: 100%;
-  background: var(--pink);
+  background: #cb468254;
   margin-right: calc(1rem - 8px);
 }
 
@@ -91,6 +96,9 @@
   }
   .menuItem>span{
     display: block;
+  }
+  .menu{
+    color: black;
   }
   .logo{
     display: flex;

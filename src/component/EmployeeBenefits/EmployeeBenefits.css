@@ -57,6 +57,7 @@
     max-width: 1200px;
     margin: 50px auto;
     padding: 20px;
+    
 
 }
 
@@ -64,20 +65,22 @@
     .search-section {
         margin-left: auto;
         max-width: 50%;
-        background: linear-gradient(135deg, #6a5acd, #836fff);
+        background: linear-gradient(#c841b6);
         color: white;
         padding: 20px;
         border-radius: 10px;
         /* Bo tròn góc */
         overflow: hidden;
         /* Ẩn bớt phần góc khi bo tròn */
+        
+        
     }
 }
 
 .search-section {
     margin-left: auto;
     max-width: 100%;
-    background: linear-gradient(135deg, #6a5acd, #836fff);
+    background: linear-gradient(135deg, #ffcece, #ffdfdf);
     color: white;
     padding: 20px;
     border-radius: 10px;
@@ -92,7 +95,7 @@
     flex-wrap: wrap;
     gap: 10px;
     align-items: center;
-    background: linear-gradient(135deg, #6a5acd, #836fff);
+    background: linear-gradient( #6a5acd);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -101,12 +104,14 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     justify-content: space-between;
+    
 }
 
 .search-container>* {
     flex: 1;
     margin-right: 10px;
     /* Khoảng cách giữa các phần tử */
+    font-size: 16px;
 }
 
 .search-container input {
@@ -118,19 +123,21 @@
 .search-button-container {
     margin-left: auto;
     /* Đẩy nút Search về phía bên phải */
+    
 }
 
 .btn-search {
-    background-color: #594ea1;
-    color: white;
+    background-color: #e2baba;
+    color: black;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    font-size: 16px;
 }
 
 .btn-search:hover {
-    background-color: #45a049;
+    background-color: #d74f66;
 }
 
 .table-section {
@@ -142,11 +149,14 @@
     /* Bo tròn góc */
     overflow: hidden;
     /* Ẩn bớt phần góc khi bo tròn */
+    background: linear-gradient(135deg, #fed9d9, #ffdfdf);
+    
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
+    
 }
 
 table th,
@@ -156,11 +166,13 @@ table td {
     /* Increase padding for better readability */
     text-align: center;
     /* Center align text in cells */
+    
 }
 
 table th {
-    background-color: #6a5acd;
-    color: white;
+    background: #b44b7754;
+    color: black;
+    font-size: 18px;
 }
 
 /* Highlighted row */
@@ -175,6 +187,7 @@ table tbody tr:nth-child(even) {
     font-weight: bold;
     /* Chữ in đậm */
     max-width: 100%;
+    font-size: 35px;
 }
 
 .note-heading {
@@ -184,6 +197,7 @@ table tbody tr:nth-child(even) {
     opacity: 0.5;
     /* Làm mờ đi một chút */
     max-width: 100%;
+    font-size: 14px;
 }
 
 .placeholder {

@@ -32,7 +32,7 @@ const SlideBar = () => {
                 >
                     {/* logo */}
                     <div >
-                        <img src={Logo} alt="logo" width="250" height="200" style={{ marginTop: "-300px", marginBottom: "-100px", marginLeft: '-20px' }} />
+                        <img src={Logo} alt="logo" width="250" height="250" style={{ marginTop: "-200px", marginBottom: "-120px", marginLeft: '5px' }} />
                     </div>
 
                     <div className="menu">
