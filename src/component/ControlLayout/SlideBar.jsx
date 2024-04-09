@@ -4,8 +4,8 @@ import Logo from "../../assets/image/logo.png";
 import { SlideBarData } from "./data/Data";
 import { UilBars } from "@iconscout/react-unicons";
 import { motion } from "framer-motion";
-import EmployeeTable from "../EmployeeBenefits/EmployeeBenefits";
-import MainDash from "../DashBoard/MainDash/MainDash";
+import DashBoard from "../DashBoard/Dashboard";
+import EmployeeList from "../EmployeeList/EmployeeList";
 
 const SlideBar = () => {
     const [selected, setSelected] = useState(0);
@@ -53,8 +53,9 @@ const SlideBar = () => {
                     </div>
                 </motion.div>
                 {/* Render the selected component */}
-                {selected === 0 && <MainDash />}
-                {selected === 4 && <EmployeeTable />}
+                {selected === 0 && <DashBoard />}
+                {/* {selected === 1 && <EmployeeList />} */}
+
 
             </div>
         </>
