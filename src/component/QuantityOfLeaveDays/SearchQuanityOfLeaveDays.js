@@ -49,8 +49,7 @@ const SearchQuanityOfLeaveDays = ({ onSearch }) => {
                     *To calculate total income, please select the boxes below
                 </div>
             </div>
-            <div className="search-section">
-            
+            {/* <div className="search-section">            */}
                 <div className="search-container">
                     <input
                         type="text"
@@ -82,7 +81,7 @@ const SearchQuanityOfLeaveDays = ({ onSearch }) => {
                         <button className='btn-search' onClick={handleSearch}>Search</button>
                     </div>
                 </div>
-            </div>
+            {/* </div> */}
         </div>
     );
 };

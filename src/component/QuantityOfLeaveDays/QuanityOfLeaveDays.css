@@ -30,22 +30,21 @@
 .search-section {
     margin-left: auto;
     max-width: 100%;
-    background: linear-gradient(135deg, #6a5acd, #836fff);
+    background: linear-gradient(to bottom, #3039FF, #D993EA);
     color: white;
-    padding: 20px;
+    padding: 15px;
     border-radius: 10px;
-    /* Bo tròn góc */
     overflow: hidden;
-    /* Ẩn bớt phần góc khi bo tròn */
 }
 
 .search-container {
     max-width: 120%;
+    height: 50px;
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
     align-items: center;
-    background: linear-gradient(135deg, #6a5acd, #836fff);
+    background: linear-gradient(to bottom, #3039FF, #D993EA);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -106,14 +105,13 @@ table th,
 table td {
     border: 1px solid #ddd;
     padding: 10px;
-    /* Increase padding for better readability */
     text-align: center;
-    /* Center align text in cells */
 }
 
 table th {
-    background-color: #6a5acd;
+    background: linear-gradient(to bottom, #3039FF, #D993EA);
     color: white;
+    height: 20px;
 }
 
 /* Highlighted row */
