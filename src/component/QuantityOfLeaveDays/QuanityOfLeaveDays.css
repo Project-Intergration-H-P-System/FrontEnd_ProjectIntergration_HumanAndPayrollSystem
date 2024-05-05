@@ -13,6 +13,11 @@
 
 }
 
+.search-container input[type="text"] {
+    width: 30%;
+    height: 15%;
+}
+
 .loca-heading {
     .search-section {
         margin-left: auto;

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import "../../component/QuantityOfLeaveDays/QuanityOfLeaveDays.css";
-import SearchQuanityOfLeaveDays from './SearchQuanityOfLeaveDays';
-import ShowQuanityOfLeaveDays from './ShowQuanityOfLeaveDays';
+import './QuanityOfLeaveDays.css';
+
 const QuanityOfLeaveDays = () => {
     const sampleData = [
         { Name: 'Gao Do', SharehoderStatus: 'Yes', sex: 'Nam', ethnic: 'Kinh', EmploymentStatus: 'Fulltime', department: 'QA', qold: 10 },
@@ -12,27 +11,117 @@ const QuanityOfLeaveDays = () => {
         { Name: 'Goku', SharehoderStatus: 'Yes', sex: 'Nam', ethnic: 'Kinh', EmploymentStatus: 'Fulltime', department: 'KD', qold: 20 },
     ];
     const [searchResult, setSearchResult] = useState(sampleData);
+    const [searchTerm, setSearchTerm] = useState('');
+    const [shareholderStatus, setShareholderStatus] = useState('');
+    const [gender, setGender] = useState('');
+    const [ethnicity, setEthnicity] = useState('');
+    const [employmentStatus, setEmploymentStatus] = useState('');
 
-    const handleSearch = (searchData) => {
+    const handleSearch = () => {
         const filteredData = sampleData.filter(item => {
             return (
-                item.Name.toLowerCase().includes(searchData.searchTerm.toLowerCase()) &&
-                (searchData.shareholderStatus === '' || item.SharehoderStatus === searchData.shareholderStatus) &&
-                (searchData.gender === '' || item.sex === searchData.gender) &&
-                (searchData.ethnicity === '' || item.ethnic === searchData.ethnicity) &&
-                (searchData.eSmploymenttatus === '' || item.EmploymentStatus === searchData.employmentStatus)
+                item.Name.toLowerCase().includes(searchTerm.toLowerCase()) &&
+                (shareholderStatus === '' || item.SharehoderStatus === shareholderStatus) &&
+                (gender === '' || item.sex === gender) &&
+                (ethnicity === '' || item.ethnic === ethnicity) &&
+                (employmentStatus === '' || item.EmploymentStatus === employmentStatus)
             );
         });
 
         setSearchResult(filteredData);
     };
 
+    const handleChange = (e) => {
+        setSearchTerm(e.target.value);
+    };
+
+    const handleShareholderStatusChange = (e) => {
+        setShareholderStatus(e.target.value);
+    };
+
+    const handleGenderChange = (e) => {
+        setGender(e.target.value);
+    };
+
+    const handleEthnicityChange = (e) => {
+        setEthnicity(e.target.value);
+    };
+
+    const handleEmploymentStatusChange = (e) => {
+        setEmploymentStatus(e.target.value);
+    };
+
     return (
         <div className="container_page">
-            <div>
-                <SearchQuanityOfLeaveDays onSearch={handleSearch} />
+            <div className='Quantity'>
+                <div className='loca-heading'>
+                    <div className='heading'>
+                        Quantity Of Leave Days
+                    </div>
+                    <div className='note-heading'>
+                        *To calculate total income, please select the boxes below
+                    </div>
+                </div>
+                <div className="search-container">
+                    <input 
+                        type="text"
+                        placeholder="Name"
+                        value={searchTerm}
+                        onChange={handleChange}
+                    />
+                    <select defaultValue="" onChange={handleShareholderStatusChange}>
+                        <option value="">Shareholder Status</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                    <select value={gender} onChange={handleGenderChange}>
+                        <option value="">Gender</option>
+                        <option value="Nam">Nam</option>
+                        <option value="Nu">Nu</option>
+                    </select>
+                    <select value={ethnicity} onChange={handleEthnicityChange}>
+                        <option value="">Ethnicity</option>
+                        <option value="Kinh">Kinh</option>
+                        <option value="Tay">Tay</option>
+                    </select>
+                    <select defaultValue="" onChange={handleEmploymentStatusChange}>
+                        <option value="">Employment Status</option>
+                        <option value="Parttime">Parttime</option>
+                        <option value="Fulltime">Fulltime</option>
+                    </select>
+                    <div className="search-button-container">
+                        <button className='btn-search' onClick={handleSearch}>Search</button>
+                    </div>
+                </div>
             </div>
-            <ShowQuanityOfLeaveDays data={searchResult} />
+            <div className="table-section">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>SharehoderStatus</th>
+                            <th>Sex</th>
+                            <th>Ethnic</th>
+                            <th>Employment Status</th>
+                            <th>Department</th>
+                            <th>QOLD</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {searchResult.map((item, index) => (
+                            <tr key={index}>
+                                <td>{item.Name}</td>
+                                <td>{item.SharehoderStatus}</td>
+                                <td>{item.sex}</td>
+                                <td>{item.ethnic}</td>
+                                <td>{item.EmploymentStatus}</td>
+                                <td>{item.department}</td>
+                                <td>{item.qold}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
         </div>
     );
 };

@@ -5,6 +5,7 @@ import { SlideBarData } from "./data/Data";
 import { UilBars } from "@iconscout/react-unicons";
 import { motion } from "framer-motion";
 import QuanityOfLeaveDays from '../QuantityOfLeaveDays/QuanityOfLeaveDays';
+import EmployeeList from "../EmployeeList/EmployeeList";
 const SlideBar = () => {
     const [selected, setSelected] = useState(0);
 
@@ -53,11 +54,12 @@ const SlideBar = () => {
                     </motion.div>
                 </div>
                 <div>
+                    {selected === 1 && <EmployeeList />}
                     {selected === 3 && <QuanityOfLeaveDays />}
                 </div>
             </div>
         </>
-        
+
     );
 };
 
