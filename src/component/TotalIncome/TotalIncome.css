@@ -94,15 +94,12 @@
 }
 
 .table-section {
-    margin-left: auto;
-    max-width: 100%;
-    margin-top: 20px;
-    overflow-x: auto;
-    border-radius: 10px;
-    /* Bo tròn góc */
-    overflow: hidden;
-    /* Ẩn bớt phần góc khi bo tròn */
-    background: linear-gradient(135deg, #fed9d9, #ffdfdf);
+    max-height: 450px; /* Đặt chiều cao tối đa của phần tử chứa bảng */
+    overflow-y: auto; /* Kích hoạt thanh cuộn dọc khi nội dung vượt quá chiều cao */
+    background: linear-gradient(135deg, #fed9d9, #ffdfdf); /* Màu nền của phần tử chứa bảng */
+    border-radius: 10px; /* Bo tròn góc của phần tử chứa bảng */
+    margin-top: 20px; /* Khoảng cách phía trên của phần tử chứa bảng */
+    padding: 20px; /* Khoảng cách bên trong của phần tử chứa bảng */
     
 }
 
@@ -114,11 +111,9 @@ table {
 
 table th,
 table td {
-    border: 1px solid #ddd;
-    padding: 20px;
-    /* Increase padding for better readability */
-    text-align: center;
-    /* Center align text in cells */
+    border: 1px solid #ddd; /* Đường viền của các ô */
+    padding: 15px; /* Khoảng cách bên trong của các ô */
+    text-align: center; /* Căn giữa nội dung của các ô */
     
 }
 

@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './TotalIncome.css';
+
 const ShowTotalIncome = ({ data }) => {
     return (
         <div className="table-section">
@@ -7,8 +8,10 @@ const ShowTotalIncome = ({ data }) => {
                 <thead>
                     <tr>
                         <th>Name</th>
-                        <th>Sex</th>
-                        <th>Working</th>
+                        <th>Shareholder Status</th>
+                        <th>Ethnicity</th>
+                        <th>Gender</th>
+                        <th>Employment Status</th>
                         <th>Department</th>
                         <th>Total Income</th>
                     </tr>
@@ -16,18 +19,19 @@ const ShowTotalIncome = ({ data }) => {
                 <tbody>
                     {data.map((item, index) => (
                         <tr key={index}>
-                            <td>{item.Name}</td>
-                            <td>{item.Sex}</td>
-                            <td>{item.Working}</td>
-                            <td>{item.Department}</td>
-                            <td>{item.TotalIncome}</td>
+                            <td>{item.name}</td>
+                            <td>{item.shareholderStatus}</td>
+                            <td>{item.ethnicity}</td>
+                            <td>{item.gender}</td>
+                            <td>{item.employmentStatus}</td>
+                            <td>{item.department}</td>
+                            <td>{item.totalIncome}</td>
                         </tr>
                     ))}
                 </tbody>
             </table>
         </div>
     );
-
 };
 
 export default ShowTotalIncome;
