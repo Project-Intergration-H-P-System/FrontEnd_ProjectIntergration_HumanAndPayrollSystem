@@ -4,7 +4,7 @@ import Logo from "../../assets/image/logo.png";
 import { SlideBarData } from "./data/Data";
 import { UilBars } from "@iconscout/react-unicons";
 import { motion } from "framer-motion";
-import DashBoard from "../DashBoard/Dashboard";
+import Dashboard from "../DashBoard/Dashboard/Dashboard";
 import EmployeeList from "../EmployeeList/EmployeeList";
 
 const SlideBar = () => {
@@ -53,7 +53,7 @@ const SlideBar = () => {
                     </div>
                 </motion.div>
                 {/* Render the selected component */}
-                {selected === 0 && <DashBoard />}
+                {selected === 0 && <Dashboard />}
                 {/* {selected === 1 && <EmployeeList />} */}
 
 

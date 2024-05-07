@@ -1,14 +1,16 @@
+import { Route, Router } from 'react-router-dom';
 import './App.css';
-import SlideBar from './component/ControlLayout/SlideBar';
-import Header from './component/ControlLayout/header/Header';
+import Dashboard from './component/DashBoard/Dashboard/Dashboard';
+import Layout from './page/Layout';
 function App() {
   return (
-    <div className="App">
-       <div  >
-        <Header />
-        <SlideBar />
-      </div>
-    </div>
+    <Router>
+            <Routes>
+                <Route path="/" element={<Layout />}>
+                    <Route index element={<Dashboard />} />
+                </Route>
+            </Routes>
+        </Router>
   );
 }
 
