@@ -156,3 +156,21 @@ table tbody tr:nth-child(even) {
     top: 10%;
     left: 20%;
 }
+
+.add-button-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.add-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.add-button:hover {
+    background-color: #0056b3;
+}

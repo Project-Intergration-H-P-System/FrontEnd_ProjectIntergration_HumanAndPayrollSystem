@@ -1,36 +1,45 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import './QuanityOfLeaveDays.css';
 
-const QuanityOfLeaveDays = () => {
-    const sampleData = [
-        { Name: 'Gao Do', SharehoderStatus: 'Yes', sex: 'Nam', ethnic: 'Kinh', EmploymentStatus: 'Fulltime', department: 'QA', qold: 10 },
-        { Name: 'Gao Trang', SharehoderStatus: 'No', sex: 'Nu', ethnic: 'Tay', EmploymentStatus: 'Parttime', department: 'QA', qold: 20 },
-        { Name: 'Kamenrider Decade', SharehoderStatus: 'Yes', sex: 'Nam', ethnic: 'Kinh', EmploymentStatus: 'Fulltime', department: 'HR', qold: 50 },
-        { Name: 'Kamenrider W', SharehoderStatus: 'Yes', sex: 'Nam', ethnic: 'Kinh', EmploymentStatus: 'Parttime', department: 'PR', qold: 30 },
-        { Name: 'Sieu Nhan Hai Tac Vang', SharehoderStatus: 'No', sex: 'Nu', ethnic: 'Tay', EmploymentStatus: 'Parttime', department: 'QA', qold: 40 },
-        { Name: 'Goku', SharehoderStatus: 'Yes', sex: 'Nam', ethnic: 'Kinh', EmploymentStatus: 'Fulltime', department: 'KD', qold: 20 },
-    ];
-    const [searchResult, setSearchResult] = useState(sampleData);
-    const [searchTerm, setSearchTerm] = useState('');
+function EmployeeTable() {
+    const [employees, setEmployees] = useState([]);
+    const [loading, setLoading] = useState(true);
     const [shareholderStatus, setShareholderStatus] = useState('');
+    const [shareholderStatuses, setShareholderStatuses] = useState([]);
+    const [searchResult, setSearchResult] = useState();
+    const [searchTerm, setSearchTerm] = useState('');
     const [gender, setGender] = useState('');
     const [ethnicity, setEthnicity] = useState('');
     const [employmentStatus, setEmploymentStatus] = useState('');
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await axios.get('http://localhost:8080/vacation');
+                setEmployees(response.data);
+                setLoading(false);
+
+                const uniqueStatuses = [...new Set(response.data.map(employee => employee.SHAREHOLDER_STATUS))];
+                setShareholderStatuses(uniqueStatuses);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
+
+        fetchData();
+    }, []);
+
+    if (loading) {
+        return <div>Loading...</div>;
+    }
+
 
     const handleSearch = () => {
-        const filteredData = sampleData.filter(item => {
-            return (
-                item.Name.toLowerCase().includes(searchTerm.toLowerCase()) &&
-                (shareholderStatus === '' || item.SharehoderStatus === shareholderStatus) &&
-                (gender === '' || item.sex === gender) &&
-                (ethnicity === '' || item.ethnic === ethnicity) &&
-                (employmentStatus === '' || item.EmploymentStatus === employmentStatus)
-            );
+        const filtered = employees.filter(employee => {
+            return employee.SHAREHOLDER_STATUS === shareholderStatus;
         });
-
-        setSearchResult(filteredData);
+        setEmployees(filtered);
     };
-
     const handleChange = (e) => {
         setSearchTerm(e.target.value);
     };
@@ -63,7 +72,7 @@ const QuanityOfLeaveDays = () => {
                     </div>
                 </div>
                 <div className="search-container">
-                    <input 
+                    <input
                         type="text"
                         placeholder="Name"
                         value={searchTerm}
@@ -94,29 +103,27 @@ const QuanityOfLeaveDays = () => {
                     </div>
                 </div>
             </div>
-            <div className="table-section">
-                <table>
+            <div >
+                <table className="table-section">
                     <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>SharehoderStatus</th>
-                            <th>Sex</th>
-                            <th>Ethnic</th>
-                            <th>Employment Status</th>
-                            <th>Department</th>
-                            <th>QOLD</th>
+                            <th className="column-header">Full Name</th>
+                            <th className="column-header">Shareholder Status</th>
+                            <th className="column-header">Gender</th>
+                            <th className="column-header">Ethnicity</th>
+                            <th className="column-header">Employment Status</th>
+                            <th className="column-header">Vacation Day</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {searchResult.map((item, index) => (
-                            <tr key={index}>
-                                <td>{item.Name}</td>
-                                <td>{item.SharehoderStatus}</td>
-                                <td>{item.sex}</td>
-                                <td>{item.ethnic}</td>
-                                <td>{item.EmploymentStatus}</td>
-                                <td>{item.department}</td>
-                                <td>{item.qold}</td>
+                        {employees.map((employee) => (
+                            <tr key={employee.id} className="table-row">
+                                <td className="table-cell">{employee.FULLNAME}</td>
+                                <td className="table-cell">{employee.SHAREHOLDER_STATUS}</td>
+                                <td className="table-cell">{employee.CURRENT_GENDER}</td>
+                                <td className="table-cell">{employee.ETHNICITY}</td>
+                                <td className="table-cell">{employee.EMPLOYMENT_STATUS}</td>
+                                <td className="table-cell">{employee.VacationDays}</td>
                             </tr>
                         ))}
                     </tbody>
@@ -124,6 +131,6 @@ const QuanityOfLeaveDays = () => {
             </div>
         </div>
     );
-};
+}
+export default EmployeeTable;
 
-export default QuanityOfLeaveDays;

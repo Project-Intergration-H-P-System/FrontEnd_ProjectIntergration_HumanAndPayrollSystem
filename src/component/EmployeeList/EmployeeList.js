@@ -1,8 +1,17 @@
-import React, { useState } from 'react';
-import { FaSearch } from "react-icons/fa";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import './EmployeeList.css';
-
-const EmployeeList = () => {
+import AddEmployeeList from './AddEmployeeList';
+function EmployeeTable() {
+    const [employees, setEmployees] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [shareholderStatus, setShareholderStatus] = useState('');
+    const [shareholderStatuses, setShareholderStatuses] = useState([]);
+    const [searchResult, setSearchResult] = useState();
+    const [searchTerm, setSearchTerm] = useState('');
+    const [gender, setGender] = useState('');
+    const [ethnicity, setEthnicity] = useState('');
+    const [employmentStatus, setEmploymentStatus] = useState('');
     const [showAddForm, setShowAddForm] = useState(false);
     const [newEmployee, setNewEmployee] = useState({
         Name: '',
@@ -13,31 +22,53 @@ const EmployeeList = () => {
         VacationDay: '',
         Benefit: ''
     });
-    const sampleData = [
-        { Name: 'Gao Do', id: '001', Gender: 'Nam', ethnic: 'Kinh', department: 'QA', VacationDay: '10', Benefit: 10 },
-        { Name: 'Gao Do', id: '001', Gender: 'Nam', ethnic: 'Kinh', department: 'QA', VacationDay: '10', Benefit: 10 },
-        { Name: 'Gao Do', id: '001', Gender: 'Nam', ethnic: 'Kinh', department: 'QA', VacationDay: '10', Benefit: 10 },
-        { Name: 'Gao Do', id: '001', Gender: 'Nam', ethnic: 'Kinh', department: 'QA', VacationDay: '10', Benefit: 10 },
-        { Name: 'Gao Do', id: '001', Gender: 'Nam', ethnic: 'Kinh', department: 'QA', VacationDay: '10', Benefit: 10 },
-        { Name: 'Gao Do', id: '001', Gender: 'Nam', ethnic: 'Kinh', department: 'QA', VacationDay: '10', Benefit: 10 },
-    ];
-    const [searchResult, setSearchResult] = useState(sampleData);
-    const [name, setName] = useState('');
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await axios.get('http://localhost:8080/list');
+                setEmployees(response.data);
+                setLoading(false);
+
+                const uniqueStatuses = [...new Set(response.data.map(employee => employee.SHAREHOLDER_STATUS))];
+                setShareholderStatuses(uniqueStatuses);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
+
+        fetchData();
+    }, []);
+
+    if (loading) {
+        return <div>Loading...</div>;
+    }
+
 
     const handleSearch = () => {
-        const filteredData = sampleData.filter(item => {
-            return (
-                (name === '' || item.Name === name)
-            );
+        const filtered = employees.filter(employee => {
+            return employee.SHAREHOLDER_STATUS === shareholderStatus;
         });
-        setSearchResult(filteredData);
+        setEmployees(filtered);
+    };
+    const handleChange = (e) => {
+        setSearchTerm(e.target.value);
     };
 
-    const handleChange = (value) => {
-        setName(value);
-        handleSearch(value)
+    const handleShareholderStatusChange = (e) => {
+        setShareholderStatus(e.target.value);
     };
 
+    const handleGenderChange = (e) => {
+        setGender(e.target.value);
+    };
+
+    const handleEthnicityChange = (e) => {
+        setEthnicity(e.target.value);
+    };
+
+    const handleEmploymentStatusChange = (e) => {
+        setEmploymentStatus(e.target.value);
+    };
     const handleAdd = () => {
         setShowAddForm(true);
     };
@@ -78,116 +109,60 @@ const EmployeeList = () => {
     };
     return (
         <div className="container_page">
-            <div className='heading-page'>
+            <div className='Quantity'>
                 <div className='loca-heading'>
                     <div className='heading'>
                         Employee List
                     </div>
                 </div>
-                <div className="input-wrapper">
-                    <FaSearch id="search-icon" />
+                <div className="search-container">
                     <input
-                        placeholder="Type to search name..."
-                        value={name}
-                        onChange={(e) => handleChange(e.target.value)}
+                        type="text"
+                        placeholder="Name"
+                        value={searchTerm}
+                        onChange={handleChange}
                     />
                 </div>
             </div>
-            <div className="table-section">
-                <table>
+            <div >
+                <table className="table-section">
                     <thead>
                         <tr>
-                            <th>FullName</th>
-                            <th>ID</th>
-                            <th>Gender</th>
-                            <th>Ethnic</th>
-                            <th>Department</th>
-                            <th>Vacation Day</th>
-                            <th>Benefit</th>
+                            <th className="column-header">Full Name</th>
+                            <th className="column-header">ID</th>
+                            <th className="column-header">Gender</th>
+                            <th className="column-header">Ethnicity</th>
+                            <th className="column-header">Shareholder Status</th>
+                            <th className="column-header">Vacation Day</th>
+                            <th className="column-header">SOCIAL SECURITY NUMBER</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {searchResult.map((item, index) => (
-                            <tr key={index}>
-                                <td>{item.Name}</td>
-                                <td>{item.id}</td>
-                                <td>{item.Gender}</td>
-                                <td>{item.ethnic}</td>
-                                <td>{item.department}</td>
-                                <td>{item.VacationDay}</td>
-                                <td>{item.Benefit}</td>
-                                <td>
-                                    <button className='view-button' onClick={() => handleView(item)}>View</button>
-                                </td>
+                        {employees.map((employee) => (
+                            <tr key={employee.id} className="table-row">
+                                <td className="table-cell">{employee.FULLNAME}</td>
+                                <td className="table-cell">{employee.PERSONAL_ID}</td>
+                                <td className="table-cell">{employee.CURRENT_GENDER}</td>
+                                <td className="table-cell">{employee.ETHNICITY}</td>
+                                <td className="table-cell">{employee.SHAREHOLDER_STATUS}</td>
+                                <td className="table-cell">{employee.VacationDays}</td>
+                                <td className="table-cell">{employee.SOCIAL_SECURITY_NUMBER}</td>
+                                <button className="view-button" onClick={() => handleView(employee)}>View</button>
                             </tr>
                         ))}
-                        {showAddForm && (
-                            <tr>
-                                <td>
-                                    <input
-                                        placeholder="Name"
-                                        value={newEmployee.Name}
-                                        onChange={(e) => setNewEmployee({ ...newEmployee, Name: e.target.value })}
-                                    />
-                                </td>
-                                <td>
-                                    <input
-                                        placeholder="ID"
-                                        value={newEmployee.id}
-                                        onChange={(e) => setNewEmployee({ ...newEmployee, id: e.target.value })}
-                                    />
-                                </td>
-                                <td>
-                                    <input
-                                        placeholder="Gender"
-                                        value={newEmployee.Gender}
-                                        onChange={(e) => setNewEmployee({ ...newEmployee, Gender: e.target.value })}
-                                    />
-                                </td>
-                                <td>
-                                    <input
-                                        placeholder="Ethnicity"
-                                        value={newEmployee.ethnic}
-                                        onChange={(e) => setNewEmployee({ ...newEmployee, ethnic: e.target.value })}
-                                    />
-                                </td>
-                                <td>
-                                    <input
-                                        placeholder="Department"
-                                        value={newEmployee.department}
-                                        onChange={(e) => setNewEmployee({ ...newEmployee, department: e.target.value })}
-                                    />
-                                </td>
-                                <td>
-                                    <input
-                                        placeholder="Vacation Day"
-                                        value={newEmployee.VacationDay}
-                                        onChange={(e) => setNewEmployee({ ...newEmployee, VacationDay: e.target.value })}
-                                    />
-                                </td>
-                                <td>
-                                    <input
-                                        placeholder="Benefit"
-                                        value={newEmployee.Benefit}
-                                        onChange={(e) => setNewEmployee({ ...newEmployee, Benefit: e.target.value })}
-                                    />
-                                </td>
-                                <td>
-                                    <button className='save-button' onClick={handleSave}>Save</button>
-                                </td>
-                            </tr>
-                        )}
                     </tbody>
                 </table>
             </div>
             <div className="button-section">
-                <button onClick={handleAdd}>Thêm</button>
-                <button onClick={handleEdit}>Sửa</button>
-                <button onClick={handleDelete}>Xóa</button>
-
+                <button className="add-button" onClick={handleAdd}>Thêm</button>
+                <button className="edit-button" onClick={handleEdit}>Sửa</button>
+                <button className="delete-button" onClick={handleDelete}>Xóa</button>
             </div>
+            {showAddForm && (
+                <AddEmployeeList setShowAddForm={setShowAddForm} setEmployees={setEmployees} />
+            )}
         </div>
     );
-};
+}
+export default EmployeeTable;
 
-export default EmployeeList;
