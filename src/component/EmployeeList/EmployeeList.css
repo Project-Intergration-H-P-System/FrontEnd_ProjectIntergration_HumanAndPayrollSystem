@@ -49,14 +49,23 @@ input:focus {
     font: 'Inter', sans-serif;
     text-align: center; /* Căn giữa nội dung trong ô */
   }
+  .column-header-action {
+    background-color: #eb8cbd;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    font: 'Inter', sans-serif;
+    text-align: center; /* Căn giữa nội dung trong ô */
+    width: 150px;
+  }
+
 
 .table-section {
     margin-left: auto;
     max-width: 100%;
     margin-top: 20px;
-    overflow-y: auto;
+    /* overflow-y: auto; */
     max-height: 500px;
-    border-radius: 10px;
+    /* border-radius: 10px; */
     background: linear-gradient(135deg, #fed9d9, #ffdfdf);
 
 }
@@ -291,7 +300,35 @@ table tbody tr:nth-child(even) {
     text-align: center; /* Căn giữa nội dung trong ô */
   }
 
+
   .table-row {
     border-bottom: 1px solid #ddd;
   }
   
+
+
+.icon-button {
+    border: none;
+    background-color: transparent;
+    padding: 0;
+    cursor: pointer;
+    position: relative; 
+}
+
+.icon-button .view {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    background-color: rgba(0, 0, 0, 0.661);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+.icon-buttons-container {
+    display: flex;
+    justify-content: space-around;
+}
+

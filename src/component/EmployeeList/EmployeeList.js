@@ -3,7 +3,11 @@ import axios from 'axios';
 import './EmployeeList.css';
 import Modal from 'react-modal';
 import { FaSearch } from "react-icons/fa";
+import { faList } from '@fortawesome/free-solid-svg-icons';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { toast } from 'react-toastify';
 
 
 function EmployeeTable() {
@@ -13,6 +17,7 @@ function EmployeeTable() {
     const [searchTerm, setSearchTerm] = useState('');
     const [originalEmployees, setOriginalEmployees] = useState([]);
     const [name, setName] = useState('');
+
 
     const [newEmployee, setNewEmployee] = useState({
         PERSONAL_ID: '',
@@ -43,26 +48,22 @@ function EmployeeTable() {
 
     const handleAdd = async () => {
         try {
-
             if (!newEmployee.PERSONAL_ID || !newEmployee.CURRENT_FIRST_NAME || !newEmployee.CURRENT_LAST_NAME || !newEmployee.SOCIAL_SECURITY_NUMBER || !newEmployee.EmployeeNumber || !newEmployee.SHAREHOLDER_STATUS || !newEmployee.CURRENT_GENDER || !newEmployee.PayRates_idPayRates) {
-
-                alert('Vui lòng điền đầy đủ thông tin.');
+                toast.error('Vui lòng điền đầy đủ thông tin.');
                 return;
             }
-
 
             const existingEmployee = employees.find(employee => employee.PERSONAL_ID === newEmployee.PERSONAL_ID || employee.SOCIAL_SECURITY_NUMBER === newEmployee.SOCIAL_SECURITY_NUMBER || employee.PayRates_idPayRates === newEmployee.PayRates_idPayRates);
             if (existingEmployee) {
-
-                alert('Personal ID, Social Security Number, hoặc ID Payrate đã tồn tại.');
+                toast.error('Personal ID, Social Security Number, hoặc ID Payrate đã tồn tại.');
                 return;
             }
+
             await axios.post('http://localhost:8080/create', newEmployee);
             const response = await axios.get('http://localhost:8080/list');
             setEmployees(response.data);
 
-
-            alert('Add new employee successfully !');
+            toast.success('Add new employee successfully !');
             setIsOpen(false);
             console.log(newEmployee);
         } catch (error) {
@@ -70,6 +71,46 @@ function EmployeeTable() {
         }
     };
 
+    // const handleAdd = async () => {
+    //     try {
+    //         // Kiểm tra xem có bất kỳ trường nào không được nhập
+    //         const emptyFields = Object.entries(newEmployee).filter(([key, value]) => {
+    //             return value === '';
+    //         });
+
+    //         if (emptyFields.length > 0) {
+    //             const fieldNames = emptyFields.map(([key]) => key).join(', ');
+    //             toast.error(`Please fill out all information in all fields: ${fieldNames} !`);
+    //             return;
+    //         }
+
+    //         // Kiểm tra xem nhân viên đã tồn tại hay không
+    //         const existingEmployee = employees.find(employee => employee.PERSONAL_ID === newEmployee.PERSONAL_ID || employee.SOCIAL_SECURITY_NUMBER === newEmployee.SOCIAL_SECURITY_NUMBER || employee.PayRates_idPayRates === newEmployee.PayRates_idPayRates);
+    //         if (existingEmployee) {
+    //             if (existingEmployee.PERSONAL_ID === newEmployee.PERSONAL_ID) {
+    //                 toast.error('Personal ID already exists !');
+    //             }
+    //             if (existingEmployee.SOCIAL_SECURITY_NUMBER === newEmployee.SOCIAL_SECURITY_NUMBER) {
+    //                 toast.error('Social Security Number already exists !');
+    //             }
+    //             if (existingEmployee.PayRates_idPayRates === newEmployee.PayRates_idPayRates) {
+    //                 toast.error('ID Payrates already exists !');
+    //             }
+    //             return;
+    //         }
+
+    //         // Thực hiện thêm nhân viên
+    //         await axios.post('http://localhost:8080/create', newEmployee);
+    //         const response = await axios.get('http://localhost:8080/list');
+    //         setEmployees(response.data);
+
+    //         toast.success('Add new employee successfully !');
+    //         setIsOpen(false);
+    //         console.log(newEmployee);
+    //     } catch (error) {
+    //         console.error('Error saving data:', error);
+    //     }
+    // };
     const handleSearch = (searchTerm) => {
         setSearchTerm(searchTerm);
         if (typeof searchTerm === 'string') {
@@ -106,6 +147,13 @@ function EmployeeTable() {
     const closeModal = () => {
         setIsOpen(false);
     };
+    const handleMouseEnter = (event) => {
+        event.currentTarget.querySelector('.view').style.opacity = 1;
+    };
+
+    const handleMouseLeave = (event) => {
+        event.currentTarget.querySelector('.view').style.opacity = 0;
+    };
 
     return (
         <div className="employee-list">
@@ -125,6 +173,16 @@ function EmployeeTable() {
                     />
                 </div>
             </div>
+
+            <button
+                className="view-detail-button"
+                onClick={() => setIsOpen(true)}
+
+
+            >
+                NEW EMPLOYEE
+            </button>
+
             <div >
                 <table className="table-section">
                     <thead>
@@ -137,7 +195,7 @@ function EmployeeTable() {
                             <th className="column-header">Country</th>
                             <th className="column-header">Employment Status</th>
                             <th className="column-header">Vacation Day</th>
-                            <th className="column-header">Action</th>
+                            <th className="column-header-action">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -151,23 +209,45 @@ function EmployeeTable() {
                                 <td className="table-cell">{employee.CURRENT_COUNTRY}</td>
                                 <td className="table-cell">{employee.EMPLOYMENT_STATUS}</td>
                                 <td className="table-cell">{employee.VacationDays}</td>
-                                <td>
-                                    <FontAwesomeIcon icon="fa-solid fa-list" />
+                                <td className="table-cell">
+                                    <div className="icon-buttons-container">
+                                        <button
+                                            className="icon-button"
+                                            onMouseEnter={handleMouseEnter}
+                                            onMouseLeave={handleMouseLeave}
+                                            onClick={{}}
+                                        >
+                                            <FontAwesomeIcon icon={faList} className="icon" />
+                                            <span className="view">View</span>
+                                        </button>
+
+                                        <button
+                                            className="icon-button"
+                                            onMouseEnter={handleMouseEnter}
+                                            onMouseLeave={handleMouseLeave}
+                                            onClick={{}}
+                                        >
+                                            <FontAwesomeIcon icon={faPenToSquare} className="icon" />
+                                            <span className="view">Update</span>
+                                        </button>
+
+                                        <button
+                                            className="icon-button"
+                                            onMouseEnter={handleMouseEnter}
+                                            onMouseLeave={handleMouseLeave}
+                                            onClick={{}}
+                                        >
+                                            <FontAwesomeIcon icon={faTrash} className="icon" />
+                                            <span className="view">Delete</span>
+                                        </button>
+                                    </div>
                                 </td>
+
                             </tr>
                         ))}
                     </tbody>
                 </table>
             </div>
-            <button
-                className="view-detail-button"
-                onClick={() => setIsOpen(true)}
-
-
-            >
-                NEW EMPLOYEE
-            </button>
-
 
             <Modal
                 isOpen={isOpen}
