@@ -26,25 +26,67 @@ function AddEmployeeList({ isOpen, closeModal, setEmployees, employees }) {
         });
     };
 
+    // const handleAdd = async () => {
+    //     try {
+    //         if (!newEmployee.PERSONAL_ID || !newEmployee.CURRENT_FIRST_NAME || !newEmployee.CURRENT_LAST_NAME || !newEmployee.SOCIAL_SECURITY_NUMBER || !newEmployee.EmployeeNumber || !newEmployee.SHAREHOLDER_STATUS || !newEmployee.CURRENT_GENDER || !newEmployee.PayRates_idPayRates) {
+    //             toast.error('Vui lòng điền đầy đủ thông tin.');
+    //             // alert("Ghi cho đủ !")
+    //             return;
+    //         }
+
+    //         const existingEmployee = employees.find(employee => employee.PERSONAL_ID === newEmployee.PERSONAL_ID || employee.SOCIAL_SECURITY_NUMBER === newEmployee.SOCIAL_SECURITY_NUMBER || employee.PayRates_idPayRates === newEmployee.PayRates_idPayRates);
+    //         if (existingEmployee) {
+    //             // toast.error('Personal ID, Social Security Number, hoặc ID Payrate đã tồn tại.');
+    //             return;
+    //         }
+
+    //         await axios.post('http://localhost:8080/create', newEmployee);
+    //         const response = await axios.get('http://localhost:8080/list');
+    //         setEmployees(response.data);
+
+    //         // toast.success('Add new employee successfully !');
+    //         alert("Thành công !")
+    //         closeModal();
+    //         console.log(newEmployee);
+    //     } catch (error) {
+    //         console.error('Error saving data:', error);
+    //     }
+    // };
+
     const handleAdd = async () => {
         try {
-            if (!newEmployee.PERSONAL_ID || !newEmployee.CURRENT_FIRST_NAME || !newEmployee.CURRENT_LAST_NAME || !newEmployee.SOCIAL_SECURITY_NUMBER || !newEmployee.EmployeeNumber || !newEmployee.SHAREHOLDER_STATUS || !newEmployee.CURRENT_GENDER || !newEmployee.PayRates_idPayRates) {
-                // toast.error('Vui lòng điền đầy đủ thông tin.');
+            // Kiểm tra xem có bất kỳ trường nào không được nhập
+            const emptyFields = Object.entries(newEmployee).filter(([key, value]) => {
+                return value === '';
+            });
+
+            if (emptyFields.length > 0) {
+                const fieldNames = emptyFields.map(([key]) => key).join(', ');
+                toast.error(`Please fill out all information in the remaining fields below: ${fieldNames} !`);
                 return;
             }
 
+            // Kiểm tra xem nhân viên đã tồn tại hay không
             const existingEmployee = employees.find(employee => employee.PERSONAL_ID === newEmployee.PERSONAL_ID || employee.SOCIAL_SECURITY_NUMBER === newEmployee.SOCIAL_SECURITY_NUMBER || employee.PayRates_idPayRates === newEmployee.PayRates_idPayRates);
             if (existingEmployee) {
-                // toast.error('Personal ID, Social Security Number, hoặc ID Payrate đã tồn tại.');
+                if (existingEmployee.PERSONAL_ID === newEmployee.PERSONAL_ID) {
+                    toast.error('Personal ID already exists !');
+                }
+                if (existingEmployee.SOCIAL_SECURITY_NUMBER === newEmployee.SOCIAL_SECURITY_NUMBER) {
+                    toast.error('Social Security Number already exists !');
+                }
+                if (existingEmployee.PayRates_idPayRates === newEmployee.PayRates_idPayRates) {
+                    toast.error('ID Payrates already exists !');
+                }
                 return;
             }
 
+            // Thực hiện thêm nhân viên
             await axios.post('http://localhost:8080/create', newEmployee);
             const response = await axios.get('http://localhost:8080/list');
             setEmployees(response.data);
 
-            // toast.success('Add new employee successfully !');
-            alert("Thành công !")
+            toast.success('Add new employee successfully !');
             closeModal();
             console.log(newEmployee);
         } catch (error) {
