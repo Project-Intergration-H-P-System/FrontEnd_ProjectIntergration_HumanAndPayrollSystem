@@ -1,0 +1,42 @@
+Phúc
+
+    // const handleAdd = async () => {
+    //     try {
+    //         // Kiểm tra xem có bất kỳ trường nào không được nhập
+    //         const emptyFields = Object.entries(newEmployee).filter(([key, value]) => {
+    //             return value === '';
+    //         });
+
+    //         if (emptyFields.length > 0) {
+    //             const fieldNames = emptyFields.map(([key]) => key).join(', ');
+    //             toast.error(`Please fill out all information in all fields: ${fieldNames} !`);
+    //             return;
+    //         }
+
+    //         // Kiểm tra xem nhân viên đã tồn tại hay không
+    //         const existingEmployee = employees.find(employee => employee.PERSONAL_ID === newEmployee.PERSONAL_ID || employee.SOCIAL_SECURITY_NUMBER === newEmployee.SOCIAL_SECURITY_NUMBER || employee.PayRates_idPayRates === newEmployee.PayRates_idPayRates);
+    //         if (existingEmployee) {
+    //             if (existingEmployee.PERSONAL_ID === newEmployee.PERSONAL_ID) {
+    //                 toast.error('Personal ID already exists !');
+    //             }
+    //             if (existingEmployee.SOCIAL_SECURITY_NUMBER === newEmployee.SOCIAL_SECURITY_NUMBER) {
+    //                 toast.error('Social Security Number already exists !');
+    //             }
+    //             if (existingEmployee.PayRates_idPayRates === newEmployee.PayRates_idPayRates) {
+    //                 toast.error('ID Payrates already exists !');
+    //             }
+    //             return;
+    //         }
+
+    //         // Thực hiện thêm nhân viên
+    //         await axios.post('http://localhost:8080/create', newEmployee);
+    //         const response = await axios.get('http://localhost:8080/list');
+    //         setEmployees(response.data);
+
+    //         toast.success('Add new employee successfully !');
+    //         setIsOpen(false);
+    //         console.log(newEmployee);
+    //     } catch (error) {
+    //         console.error('Error saving data:', error);
+    //     }
+    // };
