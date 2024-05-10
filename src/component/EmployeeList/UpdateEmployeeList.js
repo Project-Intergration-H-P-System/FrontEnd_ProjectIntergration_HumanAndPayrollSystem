@@ -1,27 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
-import { useParams } from "react-router";
 import UpdateEmployeeModal from './UpdateEmployeeModal';
 
-const UpdateEmployeeList = ({ isOpen, closeModal, setEmployees }) => {
-    const { id } = useParams(); 
+const UpdateEmployeeList = ({ id, isOpen, closeModal, setEmployees }) => {
+    // const { id } = useParams();
+
 
     const [updateEmployee, setUpdateEmployee] = useState({
         firstName: '',
         middleName: '',
         lastName: '',
-        ssNumber: '',
+        // ssNumber: '',
         country: '',
-        email: '',
+        // email: '',
         phoneNumber: '',
-        benefitid: '',
+        // benefitid: '',
         employstatus: '',
-        vacations: '',
+        // vacations: '',
         ethnicity: '',
-        status: '',
+        // status: '',
         gender: '',
-        prid: ''
+        // prid: ''
     });
 
     const handleChange = (e) => {
@@ -33,14 +33,13 @@ const UpdateEmployeeList = ({ isOpen, closeModal, setEmployees }) => {
     };
 
     useEffect(() => {
-        if (id) {
-            findById(id);
-        }
-    }, [id]); 
+        findById();
+    }, []);
 
-    const findById = async (id) => {
+    const findById = async () => {
         try {
-            const response = await axios.get(`http://localhost:8080/employee/${id}`);
+            const response = await axios.get(`http://localhost:8080/` + id);
+            console.log(response)
             if (response.data) {
                 setUpdateEmployee(response.data);
             }
@@ -52,7 +51,7 @@ const UpdateEmployeeList = ({ isOpen, closeModal, setEmployees }) => {
 
     const handleUpdate = async () => {
         try {
-            await axios.put(`http://localhost:8080/update/${id}`, updateEmployee);
+            await axios.put(`http://localhost:8080/update/` + id, updateEmployee);
             const response = await axios.get('http://localhost:8080/list');
             setEmployees(response.data);
 
@@ -68,9 +67,9 @@ const UpdateEmployeeList = ({ isOpen, closeModal, setEmployees }) => {
         <UpdateEmployeeModal
             isOpen={isOpen}
             closeModal={closeModal}
-            newEmployee={updateEmployee}  
+            updateEmployee={updateEmployee}
             handleChange={handleChange}
-            handleAdd={handleUpdate}  
+            handleUpdate={handleUpdate}
         />
     );
 }

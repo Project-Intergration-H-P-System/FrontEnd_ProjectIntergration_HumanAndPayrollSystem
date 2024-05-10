@@ -19,7 +19,6 @@ const SlideBar = () => {
             left: '-60%'
         }
     }
-    console.log(window.innerWidth)
     return (
         <>
             <div>

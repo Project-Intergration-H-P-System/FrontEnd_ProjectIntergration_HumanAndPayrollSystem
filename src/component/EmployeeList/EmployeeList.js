@@ -14,12 +14,15 @@ import ModalDelete from './ModelDelete';
 
 function EmployeeTable() {
     const [isOpen, setIsOpen] = useState(false);
+    const [isUpdateOpen, setUpdateOpen] = useState(false);
     const [isDeleteOpen, setDeleteOpen] = useState(false);
     const [employees, setEmployees] = useState([]);
     const [loading, setLoading] = useState(true);
     const [originalEmployees, setOriginalEmployees] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
     const [idToDelete, setIdToDelete] = useState(null);
+    const [idToUpdate, setIdToUpdate] = useState(null);
+
 
 
     const handleSearch = (searchTerm) => {
@@ -40,10 +43,17 @@ function EmployeeTable() {
     };
 
     const handleUpdateClick = (id) => {
-        console.log(id)
-        setIsOpen(true);
-        <UpdateEmployeeList />
+        setIdToUpdate(id);
+        setUpdateOpen(true);
     };
+
+
+
+
+
+
+
+
 
     const handleDeleteClick = (id) => {
         setIdToDelete(id);
@@ -55,7 +65,7 @@ function EmployeeTable() {
             await axios.delete('http://localhost:8080/delete/' + idToDelete)
             setEmployees((prevs) => prevs.filter((employee) => employee.id !== idToDelete));
             toast('🦄 Delete employee successfully!!!!');
-            setDeleteOpen(false); 
+            setDeleteOpen(false);
         } catch (e) {
             console.log(e)
         }
@@ -152,6 +162,7 @@ function EmployeeTable() {
                                         >
                                             <FontAwesomeIcon icon={faPenToSquare} className="icon" />
                                             <span className="view">Update</span>
+
                                         </button>
 
                                         <button
@@ -176,7 +187,14 @@ function EmployeeTable() {
                     handleDelete={handleDeleteConfirm}
                 />
             </div>
+            <UpdateEmployeeList
+                id={idToUpdate}
+                isOpen={isUpdateOpen}
+                closeModal={() => setUpdateOpen(false)}
+                setEmployees={setEmployees}
+            />
         </div>
+
     );
 }
 export default EmployeeTable;

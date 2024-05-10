@@ -1,37 +1,7 @@
-import Modal from 'react-modal';
 import './delete.css';
 
 const ModalDelete = ({ isOpen, closeModal, handleDelete }) => {
 
-    // <Modal
-    //     isOpen={isOpen}
-    //     onRequestClose={closeModal}
-    //     className="modal"
-    //     overlayClassName="modal-overlay"
-    //     appElement={document.getElementById('root')}
-    // >
-    //     <div>
-    //         <div>
-    //             <p> Are you sure you want to delete the employee?</p>
-    //         </div>
-
-    //         <div className="modal-buttons">
-    //             <button
-    //                 className="close-button"
-    //                 onClick={closeModal}
-    //             >
-    //                 Cancel
-    //             </button>
-    //             <button
-    //                 className="save-button"
-    //                 onClick={handleDelete}
-    //             >
-    //                 Delete
-    //             </button>
-
-    //         </div>
-    //     </div>
-    // </Modal>
 
     if (!isOpen) return null;
 

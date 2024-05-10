@@ -51,7 +51,6 @@ function AddEmployeeList({ isOpen, closeModal, setEmployees }) {
 
             toast.success('Add new employee successfully !');
             closeModal();
-            console.log(newEmployee);
         } catch (error) {
             console.error('Error saving data:', error);
         }
