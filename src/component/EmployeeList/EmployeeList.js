@@ -9,13 +9,18 @@ import { toast } from 'react-toastify';
 import AddEmployeeList from './AddEmployeeList';
 import UpdateEmployeeList from './UpdateEmployeeList'
 import SearchEmployeeList from './SearchEmployeeList';
+import ModalDelete from './ModelDelete';
+
 
 function EmployeeTable() {
     const [isOpen, setIsOpen] = useState(false);
+    const [isDeleteOpen, setDeleteOpen] = useState(false);
     const [employees, setEmployees] = useState([]);
     const [loading, setLoading] = useState(true);
     const [originalEmployees, setOriginalEmployees] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
+    const [idToDelete, setIdToDelete] = useState(null);
+
 
     const handleSearch = (searchTerm) => {
         setSearchTerm(searchTerm);
@@ -41,10 +46,16 @@ function EmployeeTable() {
     };
 
     const handleDeleteClick = (id) => {
+        setIdToDelete(id);
+        setDeleteOpen(true);
+    };
+
+    const handleDeleteConfirm = async () => {
         try {
-            axios.delete('http://localhost:8080/' + id)
-            setEmployees((prevs) => prevs.filter((employee) => employee.id !== id));
+            await axios.delete('http://localhost:8080/delete/' + idToDelete)
+            setEmployees((prevs) => prevs.filter((employee) => employee.id !== idToDelete));
             toast('🦄 Delete employee successfully!!!!');
+            setDeleteOpen(false); 
         } catch (e) {
             console.log(e)
         }
@@ -159,6 +170,11 @@ function EmployeeTable() {
                         ))}
                     </tbody>
                 </table>
+                <ModalDelete
+                    isOpen={isDeleteOpen}
+                    closeModal={() => setDeleteOpen(false)}
+                    handleDelete={handleDeleteConfirm}
+                />
             </div>
         </div>
     );

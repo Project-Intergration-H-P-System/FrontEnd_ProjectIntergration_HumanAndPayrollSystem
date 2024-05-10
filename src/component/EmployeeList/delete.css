@@ -1,0 +1,72 @@
+.overlayDELETE {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Màu nền với độ mờ */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modalDELETE {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 20px;
+    width: 400px;
+    height: 150px;
+    max-width: 80%;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    transition: transform 0.3s ease; /* Hiệu ứng di chuyển */
+}
+
+.modal-contentDELETE {
+    text-align: center;
+}
+
+.modalDELETE h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.modalDELETE p {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.modal-buttonsDELETE {
+    display: flex;
+    justify-content: center;
+}
+
+.modal-buttonsDELETE button {
+    padding: 10px 20px;
+    margin: 0 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    gap: 2px;
+    transition: background-color 0.3s ease; /* Hiệu ứng khi hover */
+}
+
+.confirm-delete-buttonDELETE {
+    background-color: #f44336;
+    color: #fff;
+}
+
+.cancel-buttonDELETE {
+    background-color: #ccc;
+    color: #000;
+}
+
+/* Hiệu ứng hover */
+.confirm-delete-buttonDELETE:hover,
+.cancel-buttonDELETE:hover {
+    background-color: #e8acac; /* Màu nền thay đổi khi hover */
+}
