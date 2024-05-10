@@ -10,6 +10,7 @@ import AddEmployeeList from './AddEmployeeList';
 import UpdateEmployeeList from './UpdateEmployeeList'
 import SearchEmployeeList from './SearchEmployeeList';
 import ModalDelete from './ModelDelete';
+import ViewEmployeeList from './ViewEmployeeList';
 
 
 function EmployeeTable() {
@@ -22,6 +23,8 @@ function EmployeeTable() {
     const [searchTerm, setSearchTerm] = useState('');
     const [idToDelete, setIdToDelete] = useState(null);
     const [idToUpdate, setIdToUpdate] = useState(null);
+    const [isViewOpen, setIsViewOpen] = useState(false);
+    const [viewedEmployee, setViewedEmployee] = useState(null);
 
 
 
@@ -38,8 +41,13 @@ function EmployeeTable() {
             }
         }
     };
-    const handleViewClick = () => {
-        // Implement the logic for handling the "View" button click event
+    const handleViewClick = (employee) => {
+        setViewedEmployee(employee);
+        setIsViewOpen(true);
+    };
+    const handleCloseViewDialog = () => {
+        setIsViewOpen(false);
+        setViewedEmployee(null);
     };
 
     const handleUpdateClick = (id) => {
@@ -116,6 +124,8 @@ function EmployeeTable() {
                 setEmployees={setEmployees}
                 employees={employees}
             />
+            {/* View employee dialog */}
+            <ViewEmployeeList isOpen={isViewOpen} employee={viewedEmployee} closeModal={handleCloseViewDialog} />
             <div >
                 <table className="table-section">
                     <thead>
@@ -148,7 +158,7 @@ function EmployeeTable() {
                                             className="icon-button"
                                             onMouseEnter={handleMouseEnter}
                                             onMouseLeave={handleMouseLeave}
-                                            onClick={() => handleViewClick()}
+                                            onClick={() => handleViewClick(employee)}
                                         >
                                             <FontAwesomeIcon icon={faList} className="icon" />
                                             <span className="view">View</span>

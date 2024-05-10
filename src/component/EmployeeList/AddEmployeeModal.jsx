@@ -2,7 +2,7 @@ import React from 'react';
 import Modal from 'react-modal';
 import './EmployeeList.css';
 
-const AddEmployeeModal =({ isOpen, closeModal, newEmployee, handleChange, handleAdd })=> {
+const AddEmployeeModal = ({ isOpen, closeModal, newEmployee, handleChange, handleAdd }) => {
     return (
         <Modal
             isOpen={isOpen}
@@ -13,7 +13,7 @@ const AddEmployeeModal =({ isOpen, closeModal, newEmployee, handleChange, handle
         >
             {newEmployee && (
                 <div>
-                    <h2>Add new employee</h2>
+                    <h2 className="modal-header">Add new employee</h2>
                     <div className="modal-row">
                         <div className="modal-label">First Name:</div>
                         <input

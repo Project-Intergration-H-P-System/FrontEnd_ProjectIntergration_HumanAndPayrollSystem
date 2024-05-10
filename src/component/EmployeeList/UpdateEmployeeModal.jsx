@@ -13,7 +13,7 @@ const UpdateEmployeeModal = ({ isOpen, closeModal, updateEmployee, handleChange,
         >
             {updateEmployee && (
                 <div>
-                    <h2>Update employee</h2>
+                    <h2 className="modal-header">Update employee</h2>
                     <div className="modal-row">
                         <div className="modal-label">First Name:</div>
                         <input
