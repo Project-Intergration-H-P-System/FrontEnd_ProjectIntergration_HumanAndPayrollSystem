@@ -5,7 +5,9 @@ import { faList } from '@fortawesome/free-solid-svg-icons';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { toast } from 'react-toastify';
 import AddEmployeeList from './AddEmployeeList';
+import UpdateEmployeeList from './UpdateEmployeeList'
 import SearchEmployeeList from './SearchEmployeeList';
 
 function EmployeeTable() {
@@ -32,12 +34,20 @@ function EmployeeTable() {
         // Implement the logic for handling the "View" button click event
     };
 
-    const handleUpdateClick = () => {
-        // Implement the logic for handling the "Update" button click event
+    const handleUpdateClick = (id) => {
+        console.log(id)
+        setIsOpen(true);
+        <UpdateEmployeeList />
     };
 
-    const handleDeleteClick = () => {
-        // Implement the logic for handling the "Delete" button click event
+    const handleDeleteClick = (id) => {
+        try {
+            axios.delete('http://localhost:8080/' + id)
+            setEmployees((prevs) => prevs.filter((employee) => employee.id !== id));
+            toast('🦄 Delete employee successfully!!!!');
+        } catch (e) {
+            console.log(e)
+        }
     };
 
 
@@ -102,7 +112,7 @@ function EmployeeTable() {
                     </thead>
                     <tbody>
                         {employees.map((employee) => (
-                            <tr key={employee.id} className="table-row">
+                            <tr key={employee.PERSONAL_ID} className="table-row">
                                 <td className="table-cell">{employee.FULLNAME}</td>
                                 <td className="table-cell">{employee.PERSONAL_ID}</td>
                                 <td className="table-cell">{employee.SHAREHOLDER_STATUS}</td>
@@ -127,7 +137,7 @@ function EmployeeTable() {
                                             className="icon-button"
                                             onMouseEnter={handleMouseEnter}
                                             onMouseLeave={handleMouseLeave}
-                                            onClick={() => handleUpdateClick()}
+                                            onClick={() => handleUpdateClick(employee.PERSONAL_ID)}
                                         >
                                             <FontAwesomeIcon icon={faPenToSquare} className="icon" />
                                             <span className="view">Update</span>
@@ -137,7 +147,7 @@ function EmployeeTable() {
                                             className="icon-button"
                                             onMouseEnter={handleMouseEnter}
                                             onMouseLeave={handleMouseLeave}
-                                            onClick={() => handleDeleteClick()}
+                                            onClick={() => handleDeleteClick(employee.PERSONAL_ID)}
                                         >
                                             <FontAwesomeIcon icon={faTrash} className="icon" />
                                             <span className="view">Delete</span>

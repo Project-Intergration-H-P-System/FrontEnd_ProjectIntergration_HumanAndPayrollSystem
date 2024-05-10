@@ -67,9 +67,9 @@ function EmployeeTable() {
                     <div className='heading'>
                         Quantity Of Leave Days
                     </div>
-                    <div className='note-heading'>
+                    {/* <div className='note-heading'>
                         *To calculate total income, please select the boxes below
-                    </div>
+                    </div> */}
                 </div>
                 <div className="search-container">
                     <input
