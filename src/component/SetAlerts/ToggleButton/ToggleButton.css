@@ -1,0 +1,13 @@
+/* ToggleButton.css */
+.toggle-button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: 1px solid black;
+    cursor: pointer;
+  }
+  
+  .toggle-button.active {
+    background-color: green;
+    color: white;
+  }
+  
