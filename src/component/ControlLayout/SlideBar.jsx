@@ -6,6 +6,7 @@ import { UilBars } from "@iconscout/react-unicons";
 import { motion } from "framer-motion";
 import QuanityOfLeaveDays from '../QuantityOfLeaveDays/QuanityOfLeaveDays';
 import EmployeeList from "../EmployeeList/EmployeeList";
+import TotalIncome from '../TotalIncome/TotalIncome';
 const SlideBar = () => {
     const [selected, setSelected] = useState(0);
 
@@ -54,7 +55,9 @@ const SlideBar = () => {
                 </div>
                 <div>
                     {selected === 0 && <EmployeeList />}
+                    {selected === 1 && <TotalIncome />}
                     {selected === 2 && <QuanityOfLeaveDays />}
+
                 </div>
             </div>
         </>
