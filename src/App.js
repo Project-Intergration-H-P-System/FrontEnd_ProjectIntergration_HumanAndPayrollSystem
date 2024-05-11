@@ -15,7 +15,7 @@ function App() {
     <Router>
       <Topbar />
       <div className='container'>
-        <SlideBar />
+        {/* <SlideBar /> */}
         <Switch>
           <Route exact path={"/"}>
             <DashBoard />
