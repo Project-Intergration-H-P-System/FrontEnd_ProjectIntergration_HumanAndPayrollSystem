@@ -41,6 +41,10 @@ function EmployeeTable() {
             }
         }
     };
+
+
+
+
     const handleViewClick = (employee) => {
         setViewedEmployee(employee);
         setIsViewOpen(true);
@@ -55,14 +59,6 @@ function EmployeeTable() {
         setUpdateOpen(true);
     };
 
-
-
-
-
-
-
-
-
     const handleDeleteClick = (id) => {
         setIdToDelete(id);
         setDeleteOpen(true);
@@ -71,7 +67,7 @@ function EmployeeTable() {
     const handleDeleteConfirm = async () => {
         try {
             await axios.delete('http://localhost:8080/delete/' + idToDelete)
-            setEmployees((prevs) => prevs.filter((employee) => employee.id !== idToDelete));
+            setEmployees((prevs) => prevs.filter((employee) => employee.PERSONAL_ID !== idToDelete));
             toast('🦄 Delete employee successfully!!!!');
             setDeleteOpen(false);
         } catch (e) {
@@ -84,8 +80,9 @@ function EmployeeTable() {
         const fetchData = async () => {
             try {
                 const response = await axios.get('http://localhost:8080/list');
+                console.log(response)
                 setEmployees(response.data);
-                setOriginalEmployees(response.data); // Lưu trữ danh sách nhân viên gốc
+                setOriginalEmployees(response.data);
                 setLoading(false);
             } catch (error) {
                 console.error('Error fetching data:', error);
@@ -126,12 +123,18 @@ function EmployeeTable() {
             />
             {/* View employee dialog */}
             <ViewEmployeeList isOpen={isViewOpen} employee={viewedEmployee} closeModal={handleCloseViewDialog} />
+            <UpdateEmployeeList
+                id={idToUpdate}
+                isOpen={isUpdateOpen}
+                closeModal={() => setUpdateOpen(false)}
+                setEmployees={setEmployees}
+            />
             <div >
                 <table className="table-section">
                     <thead>
                         <tr>
-                            <th className="column-header">Full Name</th>
                             <th className="column-header">ID</th>
+                            <th className="column-header">Full Name</th>
                             <th className="column-header">Shareholder Status</th>
                             <th className="column-header">Gender</th>
                             <th className="column-header">Ethnicity</th>
@@ -144,9 +147,9 @@ function EmployeeTable() {
                     <tbody>
                         {employees.map((employee) => (
                             <tr key={employee.PERSONAL_ID} className="table-row">
-                                <td className="table-cell">{employee.FULLNAME}</td>
                                 <td className="table-cell">{employee.PERSONAL_ID}</td>
-                                <td className="table-cell">{employee.SHAREHOLDER_STATUS}</td>
+                                <td className="table-cell">{employee.FULLNAME}</td>
+                                <td className="table-cell">{employee.SHAREHOLDER_STATUS === 1 ? "Yes" : "No"}</td>
                                 <td className="table-cell">{employee.CURRENT_GENDER}</td>
                                 <td className="table-cell">{employee.ETHNICITY}</td>
                                 <td className="table-cell">{employee.CURRENT_COUNTRY}</td>
@@ -197,12 +200,6 @@ function EmployeeTable() {
                     handleDelete={handleDeleteConfirm}
                 />
             </div>
-            <UpdateEmployeeList
-                id={idToUpdate}
-                isOpen={isUpdateOpen}
-                closeModal={() => setUpdateOpen(false)}
-                setEmployees={setEmployees}
-            />
         </div>
 
     );

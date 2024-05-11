@@ -9,11 +9,19 @@ function AddEmployeeList({ isOpen, closeModal, setEmployees }) {
         middleName: '',
         lastName: '',
         ssNumber: '',
+        driver: '',
+        address: '',
         country: '',
+        zip: '',
         email: '',
+        marital: '',
         phoneNumber: '',
         benefitid: '',
         employstatus: '',
+        ecode: '',
+        workcode: '',
+        number: '',
+        prname: '',
         vacations: '',
         ethnicity: '',
         status: '',
@@ -58,11 +66,11 @@ function AddEmployeeList({ isOpen, closeModal, setEmployees }) {
 
     return (
         <AddEmployeeModal
-        isOpen={isOpen}
-        closeModal={closeModal}
-        newEmployee={newEmployee}
-        handleChange={handleChange}
-        handleAdd={handleAdd}
+            isOpen={isOpen}
+            closeModal={closeModal}
+            newEmployee={newEmployee}
+            handleChange={handleChange}
+            handleAdd={handleAdd}
         />
     );
 }

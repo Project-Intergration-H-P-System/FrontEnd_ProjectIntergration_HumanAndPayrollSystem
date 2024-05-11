@@ -59,7 +59,7 @@ const ViewEmployeeList = ({ isOpen, employee, closeModal }) => {
                         <div className="modal-label">Shareholder Status:</div>
                         <input
                             type="text"
-                            value={employee.SHAREHOLDER_STATUS === '1' ? 'Yes' : 'No'}
+                            value={employee.SHAREHOLDER_STATUS === 1 ? 'Yes' : 'No'}
                             disabled
                             className="modal-input"
                         />
@@ -68,7 +68,7 @@ const ViewEmployeeList = ({ isOpen, employee, closeModal }) => {
                         <div className="modal-label">Gender:</div>
                         <input
                             type="text"
-                            value={employee.CURRENT_GENDER === 'male' ? 'Male' : 'Female'}
+                            value={employee.CURRENT_GENDER === 'Nam' ? 'Nam' : 'Nu'}
                             disabled
                             className="modal-input"
                         />
@@ -109,7 +109,7 @@ const ViewEmployeeList = ({ isOpen, employee, closeModal }) => {
                             className="modal-input"
                         />
                     </div>
-                    <div className="modal-row">
+                    {/* <div className="modal-row">
                         <div className="modal-label">Employee Number:</div>
                         <input
                             type="text"
@@ -117,7 +117,7 @@ const ViewEmployeeList = ({ isOpen, employee, closeModal }) => {
                             disabled
                             className="modal-input"
                         />
-                    </div>
+                    </div> */}
 
 
 

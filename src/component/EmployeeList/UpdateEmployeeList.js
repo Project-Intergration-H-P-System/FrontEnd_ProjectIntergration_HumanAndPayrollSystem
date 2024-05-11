@@ -11,17 +11,25 @@ const UpdateEmployeeList = ({ id, isOpen, closeModal, setEmployees }) => {
         firstName: '',
         middleName: '',
         lastName: '',
-        // ssNumber: '',
+        ssNumber: '',
+        driver: '',
+        address: '',
         country: '',
-        // email: '',
+        zip: '',
+        email: '',
+        martial: '',
         phoneNumber: '',
-        // benefitid: '',
+        benefitid: '',
         employstatus: '',
-        // vacations: '',
+        ecode: '',
+        workcode: '',
+        number: '',
+        prname: '',
+        vacations: '',
         ethnicity: '',
-        // status: '',
+        status: '',
         gender: '',
-        // prid: ''
+        prid: ''
     });
 
     const handleChange = (e) => {
@@ -34,12 +42,11 @@ const UpdateEmployeeList = ({ id, isOpen, closeModal, setEmployees }) => {
 
     useEffect(() => {
         findById();
-    }, []);
+    }, [id]);
 
     const findById = async () => {
         try {
             const response = await axios.get(`http://localhost:8080/` + id);
-            console.log(response)
             if (response.data) {
                 setUpdateEmployee(response.data);
             }

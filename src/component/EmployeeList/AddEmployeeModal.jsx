@@ -55,11 +55,41 @@ const AddEmployeeModal = ({ isOpen, closeModal, newEmployee, handleChange, handl
                         />
                     </div>
                     <div className="modal-row">
+                        <div className="modal-label">DRIVERS LICENSE:</div>
+                        <input
+                            type="text"
+                            name="driver"
+                            value={newEmployee.driver}
+                            onChange={handleChange}
+                            className="modal-input"
+                        />
+                    </div>
+                    <div className="modal-row">
+                        <div className="modal-label">ADDRESS:</div>
+                        <input
+                            type="text"
+                            name="address"
+                            value={newEmployee.address}
+                            onChange={handleChange}
+                            className="modal-input"
+                        />
+                    </div>
+                    <div className="modal-row">
                         <div className="modal-label">Country:</div>
                         <input
                             type="text"
                             name="country"
                             value={newEmployee.country}
+                            onChange={handleChange}
+                            className="modal-input"
+                        />
+                    </div>
+                    <div className="modal-row">
+                        <div className="modal-label">ZIP:</div>
+                        <input
+                            type="text"
+                            name="zip"
+                            value={newEmployee.zip}
                             onChange={handleChange}
                             className="modal-input"
                         />
@@ -95,6 +125,16 @@ const AddEmployeeModal = ({ isOpen, closeModal, newEmployee, handleChange, handl
                         />
                     </div>
                     <div className="modal-row">
+                        <div className="modal-label">PayRate:</div>
+                        <input
+                            type="text"
+                            name="prname"
+                            value={newEmployee.prname}
+                            onChange={handleChange}
+                            className="modal-input"
+                        />
+                    </div>
+                    <div className="modal-row">
                         <div className="modal-label">Vacations:</div>
                         <input
                             type="text"
@@ -103,6 +143,71 @@ const AddEmployeeModal = ({ isOpen, closeModal, newEmployee, handleChange, handl
                             onChange={handleChange}
                             className="modal-input"
                         />
+                    </div>
+                    <div className="modal-row">
+                        <div className="modal-label">PaidToDate:</div>
+                        <input
+                            type="text"
+                            name="pd"
+                            value={newEmployee.pd}
+                            onChange={handleChange}
+                            className="modal-input"
+                        />
+                    </div>
+                    <div className="modal-row">
+                        <div className="modal-label">PaidLastYear:</div>
+                        <input
+                            type="text"
+                            name="py"
+                            value={newEmployee.py}
+                            onChange={handleChange}
+                            className="modal-input"
+                        />
+                    </div>
+                    <div className="modal-row">
+                        <div className="modal-label">NUMBER DAYS REQUIREMENT:</div>
+                        <input
+                            type="text"
+                            name="number"
+                            value={newEmployee.number}
+                            onChange={handleChange}
+                            className="modal-input"
+                        />
+                    </div>
+                    <div className="modal-row">
+                        <div className="modal-label">EMPLOYMENT CODE:</div>
+                        <input
+                            type="text"
+                            name="ecode"
+                            value={newEmployee.ecode}
+                            placeholder='540-*'
+                            onChange={handleChange}
+                            className="modal-input"
+                        />
+                    </div>
+                    <div className="modal-row">
+                        <div className="modal-label">WORKERS COMPCODE:</div>
+                        <input
+                            type="text"
+                            name="workcode"
+                            value={newEmployee.workcode}
+                            placeholder='C#,Java,Nodejs'
+                            onChange={handleChange}
+                            className="modal-input"
+                        />
+                    </div>
+                    <div className="modal-row">
+                        <div className="modal-label">MARITAL STATUS:</div>
+                        <select
+                            name="marital"
+                            value={newEmployee.marital}
+                            onChange={handleChange}
+                            className="modal-input"
+                        >
+                            <option value="">Select marital status</option>
+                            <option value="Married">Married</option>
+                            <option value="Single">Single</option>
+                        </select>
                     </div>
                     <div className="modal-row">
                         <div className="modal-label">Shareholder Status:</div>
