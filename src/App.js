@@ -4,7 +4,8 @@ import SlideBar from './component/ControlLayout/SlideBar';
 import './App.css';
 import DashBoard from './component/DashBoard/dashBoard/DashBoard';
 import Topbar from './component/DashBoard/topbar/Topbar';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route} from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 function App() {
   return (
     // <div>
