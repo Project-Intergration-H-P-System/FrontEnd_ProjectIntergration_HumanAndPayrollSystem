@@ -1,15 +1,9 @@
-import './App.css';
-import SlideBar from './component/ControlLayout/SlideBar';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import MainPage from './page/MainPage/MainPage';
 
 function App() {
   return (
-    <div className='App'>
-      <ToastContainer />
-      <div >
-        <SlideBar />
-      </div>
+    <div>
+      <MainPage />
     </div>
   );
 }

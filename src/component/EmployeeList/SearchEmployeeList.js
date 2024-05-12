@@ -17,11 +17,14 @@ function SearchEmployeeList({ handleChange }) {
                 <div className='heading'>
                     Employee List
                 </div>
+                <div className='note-heading'>
+                    *Show the list of employee and the functions : add new employee; view, update and delete employee
+                </div>
             </div>
             <div className="input-wrapper">
                 <FaSearch id="search-icon" />
                 <input
-                    placeholder="Type to search name..."
+                    placeholder="Type to search by name"
                     value={name}
                     onChange={(e) => handleChangeName(e.target.value)}
 
