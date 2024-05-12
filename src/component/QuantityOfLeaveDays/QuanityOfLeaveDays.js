@@ -2,13 +2,10 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './QuanityOfLeaveDays.css';
 
-function EmployeeTable() {
+function QuanityOfLeaveDays() {
     const [employees, setEmployees] = useState([]);
     const [loading, setLoading] = useState(true);
     const [shareholderStatus, setShareholderStatus] = useState('');
-    const [shareholderStatuses, setShareholderStatuses] = useState([]);
-    const [searchResult, setSearchResult] = useState();
-    const [searchTerm, setSearchTerm] = useState('');
     const [gender, setGender] = useState('');
     const [ethnicity, setEthnicity] = useState('');
     const [employmentStatus, setEmploymentStatus] = useState('');
@@ -25,9 +22,6 @@ function EmployeeTable() {
                 const response = await axios.get('http://localhost:8080/vacation');
                 setEmployees(response.data);
                 setLoading(false);
-
-                const uniqueStatuses = [...new Set(response.data.map(employee => employee.SHAREHOLDER_STATUS))];
-                setShareholderStatuses(uniqueStatuses);
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
@@ -49,26 +43,6 @@ function EmployeeTable() {
         return <div>Loading...</div>;
     }
 
-    const handleChange = (e) => {
-        setSearchTerm(e.target.value);
-    };
-
-    const handleShareholderStatusChange = (e) => {
-        setShareholderStatus(e.target.value);
-    };
-
-    const handleGenderChange = (e) => {
-        setGender(e.target.value);
-    };
-
-    const handleEthnicityChange = (e) => {
-        setEthnicity(e.target.value);
-    };
-
-    const handleEmploymentStatusChange = (e) => {
-        setEmploymentStatus(e.target.value);
-    };
-
     const handleSearch = () => {
         setSearchConditions({
             shareholderStatus,
@@ -86,14 +60,14 @@ function EmployeeTable() {
                         Quantity Of Leave Days
                     </div>
                     <div className='note-heading'>
-                        *To calculate total income, please select the boxes below
+                        *To show the quantity of leave days of each employee and search by fields: shareholder status, gender, ethnicity and employment status
                     </div>
                 </div>
                 <div className="search-container">
                     <select value={shareholderStatus} onChange={(e) => setShareholderStatus(e.target.value)}>
                         <option value="">Shareholder Status</option>
-                        <option value="0">Yes</option>
-                        <option value="1">No</option>
+                        <option value="1">Yes (1)</option>
+                        <option value="0">No (0)</option>
                     </select>
                     <select value={gender} onChange={(e) => setGender(e.target.value)}>
                         <option value="">Gender</option>
@@ -144,4 +118,4 @@ function EmployeeTable() {
         </div>
     );
 }
-export default EmployeeTable;
+export default QuanityOfLeaveDays;

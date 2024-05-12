@@ -1,0 +1,39 @@
+.SetAlert-Module{
+    width: 600px;
+    height: 450px;
+    border-radius: 10px;
+    border: 2px solid #7d7a7a;
+}
+.crossbar{
+    width: 100%;
+    background-color: #333;
+    height: 5px;
+}
+.test-SetAlert{
+    color: #000000;
+    font-size: 16px;
+    margin-top: 20px;
+    width: 80%;
+}
+.head-SetAlert{
+    margin-bottom: 5px;
+    color: #565454 solid;
+    font-size: 25px;
+    margin-top: 15px;
+}
+.padding-SetAlert{
+    margin-top: 5%;
+    margin-left: 5%;
+}
+.alert-row {
+    display: flex;
+    grid-template-columns: 1fr auto; /* Chia mỗi dòng thành hai cột, với một phần chiếm toàn bộ width và một phần chứa ToggleButton */
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+.SetAlert-component{
+    position: absolute;
+    top: 10%;
+    left: 20%;
+}

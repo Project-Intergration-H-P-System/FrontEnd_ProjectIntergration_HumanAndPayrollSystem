@@ -13,7 +13,7 @@ import ModalDelete from './ModelDelete';
 import ViewEmployeeList from './ViewEmployeeList';
 
 
-function EmployeeTable() {
+function EmployeeList() {
     const [isOpen, setIsOpen] = useState(false);
     const [isUpdateOpen, setUpdateOpen] = useState(false);
     const [isDeleteOpen, setDeleteOpen] = useState(false);
@@ -204,4 +204,4 @@ function EmployeeTable() {
 
     );
 }
-export default EmployeeTable;
+export default EmployeeList;

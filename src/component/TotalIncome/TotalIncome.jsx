@@ -3,7 +3,7 @@ import axios from 'axios';
 import './TotalIncome.css';
 
 
-const EmployeeTable = () => {
+const TotalIncome = () => {
     const [employees, setEmployees] = useState([]);
     const [loading, setLoading] = useState(true);
 
@@ -12,7 +12,14 @@ const EmployeeTable = () => {
     const [ethnicity, setEthnicity] = useState('');
     const [employmentStatus, setEmploymentStatus] = useState('');
     const [department, setDepartment] = useState('');
-
+    const [filteredEmployees, setFilteredEmployees] = useState([]);
+    const [searchConditions, setSearchConditions] = useState({
+        shareholderStatus: '',
+        gender: '',
+        ethnicity: '',
+        employmentStatus: '',
+        department: ''
+    });
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -21,29 +28,34 @@ const EmployeeTable = () => {
                 setLoading(false);
             } catch (error) {
                 console.error('Error fetching data:', error);
-                setLoading(false);
             }
         };
 
         fetchData();
-    }, []);
+        const filtered = employees.filter(employee => {
+            return (
+                (employee.SHAREHOLDER_STATUS.toString() === searchConditions.shareholderStatus || !searchConditions.shareholderStatus) &&
+                (employee.CURRENT_GENDER.toLowerCase() === searchConditions.gender.toLowerCase() || !searchConditions.gender) &&
+                (employee.ETHNICITY.trim().toLowerCase() === searchConditions.ethnicity.trim().toLowerCase() || !searchConditions.ethnicity) &&
+                (employee.EMPLOYMENT_STATUS.trim().toLowerCase() === searchConditions.employmentStatus.trim().toLowerCase() || !searchConditions.employmentStatus) &&
+                (employee.DEPARTMENT.trim().toLowerCase() === searchConditions.department.trim().toLowerCase() || !searchConditions.department)
+            );
+        });
+        setFilteredEmployees(filtered);
+    }, [employees, searchConditions]);
+
+    if (loading) {
+        return <div>Loading...</div>;
+    }
 
     const handleSearch = () => {
-        let filteredEmployees = employees.filter(employee => {
-            const matchesShareholderStatus = shareholderStatus === '' || employee.SHAREHOLDER_STATUS.toLowerCase() === shareholderStatus.toLowerCase();
-            const matchesGender = gender === '' || employee.CURRENT_GENDER.toLowerCase() === gender.toLowerCase();
-            const matchesEthnicity = ethnicity === '' || employee.ETHNICITY.toLowerCase() === ethnicity.toLowerCase();
-            const matchesEmploymentStatus = employmentStatus === '' || employee.EMPLOYMENT_STATUS.toLowerCase() === employmentStatus.toLowerCase();
-            const matchesDepartment = department === '' || employee.DEPARTMENT.toLowerCase() === department.toLowerCase();
-
-            return matchesShareholderStatus && matchesGender && matchesEthnicity && matchesEmploymentStatus && matchesDepartment;
+        setSearchConditions({
+            shareholderStatus,
+            gender,
+            ethnicity,
+            employmentStatus,
+            department
         });
-
-        setEmployees(filteredEmployees);
-    };
-
-    const renderShareholderStatus = (status) => {
-        return status === 1 ? 'Yes' : 'No';
     };
 
     return (
@@ -51,40 +63,40 @@ const EmployeeTable = () => {
             <div className='Quantity'>
                 <div className='loca-heading'>
                     <div className='heading'>
-                        Quantity Of Leave Days
+                        Total Income
                     </div>
                     <div className='note-heading'>
-                        *To calculate total income, please select the boxes below
+                        *To show the total salary of each employee and search by fields: shareholder status, gender, ethnicity , employment status and department
                     </div>
                 </div>
                 <div className="search-container">
-                    <select value={shareholderStatus} onChange={(e) => setShareholderStatus(e.target.value)} style={{ fontSize: '14px' }}>
-                        <option value="" disabled hidden>Shareholder Status</option>
-                        <option value="Yes">Yes</option>
-                        <option value="No">No</option>
+                    <select value={shareholderStatus} onChange={(e) => setShareholderStatus(e.target.value)}>
+                        <option value="">Shareholder Status</option>
+                        <option value="1">Yes (1)</option>
+                        <option value="0">No (0)</option>
                     </select>
-                    <select value={gender} onChange={(e) => setGender(e.target.value)} style={{ fontSize: '14px' }}>
-                        <option value="" disabled hidden>Gender</option>
+                    <select value={gender} onChange={(e) => setGender(e.target.value)}>
+                        <option value="">Gender</option>
                         <option value="Nam">Nam</option>
                         <option value="Nu">Nu</option>
                     </select>
-                    <select value={ethnicity} onChange={(e) => setEthnicity(e.target.value)} style={{ fontSize: '14px' }}>
-                        <option value="" disabled hidden>Ethnicity</option>
+                    <select value={ethnicity} onChange={(e) => setEthnicity(e.target.value)}>
+                        <option value="">Ethnicity</option>
                         <option value="Kinh">Kinh</option>
                         <option value="Tay">Tay</option>
                     </select>
-                    <select value={employmentStatus} onChange={(e) => setEmploymentStatus(e.target.value)} style={{ fontSize: '14px' }}>
-                        <option value="" disabled hidden>Employment Status</option>
-                        <option value="Parttime">Parttime</option>
-                        <option value="Fulltime">Fulltime</option>
+                    <select value={employmentStatus} onChange={(e) => setEmploymentStatus(e.target.value)}>
+                        <option value="">Employment Status</option>
+                        <option value="Part-time">Part-time</option>
+                        <option value="Full-time">Full-time</option>
                     </select>
-                    <select value={department} onChange={(e) => setDepartment(e.target.value)} style={{ fontSize: '14px' }}>
-                        <option value="" disabled hidden>Department</option>
-                        <option value="Department1">DEV</option>
-                        <option value="Department2">BA</option>
+                    <select value={department} onChange={(e) => setDepartment(e.target.value)}>
+                        <option value="">Department</option>
+                        <option value="DEV">DEV</option>
+                        <option value="BA">BA</option>
                     </select>
                     <div className="search-button-container">
-                        <button className='btn-search' onClick={handleSearch} style={{ fontSize: '14px' }}>Search</button>
+                        <button className='btn-search' onClick={handleSearch}>Search</button>
                     </div>
                 </div>
 
@@ -103,10 +115,10 @@ const EmployeeTable = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {employees.map((employee) => (
+                        {filteredEmployees.map((employee) => (
                             <tr key={employee.id} className="table-row">
                                 <td className="table-cell">{employee.FULLNAME}</td>
-                                <td className="table-cell">{renderShareholderStatus(employee.SHAREHOLDER_STATUS)}</td>
+                                <td className="table-cell">{employee.SHAREHOLDER_STATUS}</td>
                                 <td className="table-cell">{employee.CURRENT_GENDER}</td>
                                 <td className="table-cell">{employee.ETHNICITY}</td>
                                 <td className="table-cell">{employee.EMPLOYMENT_STATUS}</td>
@@ -121,4 +133,4 @@ const EmployeeTable = () => {
     );
 };
 
-export default EmployeeTable;
+export default TotalIncome;
