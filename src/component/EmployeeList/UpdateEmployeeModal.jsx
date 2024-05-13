@@ -45,6 +45,17 @@ const UpdateEmployeeModal = ({ isOpen, closeModal, updateEmployee, handleChange,
                         />
                     </div>
                     <div className="modal-row">
+                        <div className="modal-label">Birth Day:</div>
+                        <input
+                            type="date"
+                            name="birthDay"
+                            value={updateEmployee.birthDay}
+                            placeholder='Enter birthDay'
+                            onChange={handleChange}
+                            className="modal-input"
+                        />
+                    </div>
+                    <div className="modal-row">
                         <div className="modal-label">Social Security Number:</div>
                         <input
                             type="text"
@@ -87,7 +98,7 @@ const UpdateEmployeeModal = ({ isOpen, closeModal, updateEmployee, handleChange,
                     <div className="modal-row">
                         <div className="modal-label">ZIP:</div>
                         <input
-                            type="text"
+                            type="number"
                             name="zip"
                             value={updateEmployee.zip}
                             onChange={handleChange}
@@ -115,16 +126,6 @@ const UpdateEmployeeModal = ({ isOpen, closeModal, updateEmployee, handleChange,
                         />
                     </div>
                     <div className="modal-row">
-                        <div className="modal-label">Ethnicity:</div>
-                        <input
-                            type="text"
-                            name="ethnicity"
-                            value={updateEmployee.ethnicity}
-                            onChange={handleChange}
-                            className="modal-input"
-                        />
-                    </div>
-                    <div className="modal-row">
                         <div className="modal-label">PayRate:</div>
                         <input
                             type="text"
@@ -137,7 +138,7 @@ const UpdateEmployeeModal = ({ isOpen, closeModal, updateEmployee, handleChange,
                     <div className="modal-row">
                         <div className="modal-label">Vacations:</div>
                         <input
-                            type="text"
+                            type="number"
                             name="vacations"
                             value={updateEmployee.vacations}
                             onChange={handleChange}
@@ -147,7 +148,7 @@ const UpdateEmployeeModal = ({ isOpen, closeModal, updateEmployee, handleChange,
                     <div className="modal-row">
                         <div className="modal-label">PaidToDate:</div>
                         <input
-                            type="text"
+                            type="number"
                             name="pd"
                             value={updateEmployee.pd}
                             onChange={handleChange}
@@ -157,19 +158,9 @@ const UpdateEmployeeModal = ({ isOpen, closeModal, updateEmployee, handleChange,
                     <div className="modal-row">
                         <div className="modal-label">PaidLastYear:</div>
                         <input
-                            type="text"
+                            type="number"
                             name="py"
                             value={updateEmployee.py}
-                            onChange={handleChange}
-                            className="modal-input"
-                        />
-                    </div>
-                    <div className="modal-row">
-                        <div className="modal-label">NUMBER DAYS REQUIREMENT:</div>
-                        <input
-                            type="text"
-                            name="number"
-                            value={updateEmployee.number}
                             onChange={handleChange}
                             className="modal-input"
                         />
@@ -186,7 +177,7 @@ const UpdateEmployeeModal = ({ isOpen, closeModal, updateEmployee, handleChange,
                         />
                     </div>
                     <div className="modal-row">
-                        <div className="modal-label">WORKERS COMPCODE:</div>
+                        <div className="modal-label">WORKERS COMP CODE:</div>
                         <input
                             type="text"
                             name="workcode"
@@ -197,10 +188,46 @@ const UpdateEmployeeModal = ({ isOpen, closeModal, updateEmployee, handleChange,
                         />
                     </div>
                     <div className="modal-row">
+                        <div className="modal-label">NUMBER DAYS REQUIREMENT OF WORKING:</div>
+                        <input
+                            type="text"
+                            name="number"
+                            value={updateEmployee.number}
+                            onChange={handleChange}
+                            className="modal-input"
+                        />
+                    </div>
+                    <div className="modal-row">
+                        <div className="modal-label">Ethnicity:</div>
+                        <select
+                            name="ethnicity"
+                            value={updateEmployee.ethnicity}
+                            onChange={handleChange}
+                            className="modal-input"
+                        >
+                            <option value="">Select ethnicity</option>
+                            <option value="Kinh      ">Kinh</option>
+                            <option value="Tay       ">Tay</option>
+                        </select>
+                    </div>
+                    <div className="modal-row">
+                        <div className="modal-label">Gender:</div>
+                        <select
+                            name="gender"
+                            value={updateEmployee.gender}
+                            onChange={handleChange}
+                            className="modal-input"
+                        >
+                            <option value="">Select gender</option>
+                            <option value="Nam">Nam</option>
+                            <option value="Nu">Nu</option>
+                        </select>
+                    </div>
+                    <div className="modal-row">
                         <div className="modal-label">MARITAL STATUS:</div>
                         <select
-                            name="martial"
-                            value={updateEmployee.martial}
+                            name="marital"
+                            value={updateEmployee.marital}
                             onChange={handleChange}
                             className="modal-input"
                         >
@@ -223,16 +250,17 @@ const UpdateEmployeeModal = ({ isOpen, closeModal, updateEmployee, handleChange,
                         </select>
                     </div>
                     <div className="modal-row">
-                        <div className="modal-label">Gender:</div>
+                        <div className="modal-label">Benefit ID:</div>
                         <select
-                            name="gender"
-                            value={updateEmployee.gender}
+                            name="benefitid"
+                            value={updateEmployee.benefitid}
                             onChange={handleChange}
                             className="modal-input"
                         >
-                            <option value="">Select gender</option>
-                            <option value="Nam">Nam</option>
-                            <option value="Nu">Nu</option>
+                            <option value="">Select benefit id</option>
+                            <option value="1">Luongki1</option>
+                            <option value="2">Bonus</option>
+                            <option value="3">ThuongTet</option>
                         </select>
                     </div>
                     <div className="modal-row">
@@ -250,20 +278,6 @@ const UpdateEmployeeModal = ({ isOpen, closeModal, updateEmployee, handleChange,
                         </select>
                     </div>
                     <div className="modal-row">
-                        <div className="modal-label">ID Benefit:</div>
-                        <select
-                            name="benefitid"
-                            value={updateEmployee.benefitid}
-                            onChange={handleChange}
-                            className="modal-input"
-                        >
-                            <option value="">Select id benefit</option>
-                            <option value="1">Luongki1</option>
-                            <option value="2">Bonus</option>
-                            <option value="3">ThuongTet</option>
-                        </select>
-                    </div>
-                    <div className="modal-row">
                         <div className="modal-label">Employment Status:</div>
                         <select
                             name="employstatus"
@@ -274,6 +288,19 @@ const UpdateEmployeeModal = ({ isOpen, closeModal, updateEmployee, handleChange,
                             <option value="">Select employstatus</option>
                             <option value="Part-time ">Part-time </option>
                             <option value="Full-time ">Full-time </option>
+                        </select>
+                    </div>
+                    <div className="modal-row">
+                        <div className="modal-label">Department:</div>
+                        <select
+                            name="depart"
+                            value={updateEmployee.depart}
+                            onChange={handleChange}
+                            className="modal-input"
+                        >
+                            <option value="">Select employstatus</option>
+                            <option value="DEV">DEV</option>
+                            <option value="BA">BA</option>
                         </select>
                     </div>
                     <div className="modal-buttons">

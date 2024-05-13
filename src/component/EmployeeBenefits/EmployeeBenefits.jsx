@@ -77,7 +77,7 @@ function EmployeeBenefits() {
                         {filteredEmployees.map((employee) => (
                             <tr key={employee.id} className="table-row">
                                 <td className="table-cell">{employee.FULLNAME}</td>
-                                <td className="table-cell">{employee.SHAREHOLDER_STATUS}</td>
+                                <td className="table-cell">{employee.SHAREHOLDER_STATUS === 1 ? "Yes" : "No"}</td>
                                 <td className="table-cell">{employee.CURRENT_GENDER}</td>
                                 <td className="table-cell">{employee.ETHNICITY}</td>
                                 <td className="table-cell">{employee.FROFIT}</td>

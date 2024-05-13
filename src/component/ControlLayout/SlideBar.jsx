@@ -56,11 +56,11 @@ const SlideBar = () => {
                     </div>
                 </motion.div>
                 {/* Render the selected component */}
-                {selected === 1 && <EmployeeList />}
-                {selected === 2 && <TotalIncome />}
-                {selected === 3 && <QuanityOfLeaveDays />}
-                {selected === 4 && <EmployeeBenefits />}
-                {selected === 5 && <SetAlerts />}
+                {selected === 0 && <EmployeeList />}
+                {selected === 1 && <TotalIncome />}
+                {selected === 2 && <QuanityOfLeaveDays />}
+                {selected === 3 && <EmployeeBenefits />}
+                {selected === 4 && <SetAlerts />}
 
             </div>
         </>

@@ -3,19 +3,24 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import AddEmployeeModal from './AddEmployeeModal';
 
+
 function AddEmployeeList({ isOpen, closeModal, setEmployees }) {
     const [newEmployee, setNewEmployee] = useState({
         firstName: '',
         middleName: '',
         lastName: '',
+        birthDay: '',
         ssNumber: '',
         driver: '',
         address: '',
         country: '',
         zip: '',
+        gender: '',
+        phoneNumber: '',
         email: '',
         marital: '',
-        phoneNumber: '',
+        ethnicity: '',
+        status: '',
         benefitid: '',
         employstatus: '',
         ecode: '',
@@ -23,10 +28,10 @@ function AddEmployeeList({ isOpen, closeModal, setEmployees }) {
         number: '',
         prname: '',
         vacations: '',
-        ethnicity: '',
-        status: '',
-        gender: '',
-        prid: ''
+        prid: '',
+        pd: '',
+        py: '',
+        depart: ''
     });
 
     const handleChange = (e) => {

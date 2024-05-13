@@ -11,10 +11,6 @@ import {
 // Sidebar Data
 export const SlideBarData = [
     {
-        icon: UilEstate,
-        heading: "Dashboard",
-    },
-    {
         icon: UilClipboardAlt,
         heading: "Employee list",
     },

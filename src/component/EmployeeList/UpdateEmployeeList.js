@@ -11,14 +11,18 @@ const UpdateEmployeeList = ({ id, isOpen, closeModal, setEmployees }) => {
         firstName: '',
         middleName: '',
         lastName: '',
+        birthDay: '',
         ssNumber: '',
         driver: '',
         address: '',
         country: '',
         zip: '',
-        email: '',
-        martial: '',
+        gender: '',
         phoneNumber: '',
+        email: '',
+        marital: '',
+        ethnicity: '',
+        status: '',
         benefitid: '',
         employstatus: '',
         ecode: '',
@@ -26,10 +30,10 @@ const UpdateEmployeeList = ({ id, isOpen, closeModal, setEmployees }) => {
         number: '',
         prname: '',
         vacations: '',
-        ethnicity: '',
-        status: '',
-        gender: '',
-        prid: ''
+        prid: '',
+        pd: '',
+        py: '',
+        depart: ''
     });
 
     const handleChange = (e) => {
