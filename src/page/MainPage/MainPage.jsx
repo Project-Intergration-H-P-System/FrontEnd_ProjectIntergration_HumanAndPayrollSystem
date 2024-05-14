@@ -4,11 +4,21 @@ import SlideBar from '../../component/ControlLayout/SlideBar';
 import { UilBell } from "@iconscout/react-unicons";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import BirthDays from '../../component/SetAlerts/SetAlertBirthday/SetAlerBirthday';
+import ToggleButton from '../../component/SetAlerts/ToggleButton/ToggleButton';
+
 
 const MainPage = () => {
     const [showNotifications, setShowNotifications] = useState(false);
     const [selectedCategory, setSelectedCategory] = useState(null);
     const bellRef = useRef(null);
+
+    const [isToggled, setIsToggled] = useState(false);
+
+    const handleToggle = () => {
+        setIsToggled(!isToggled);
+    };
+
 
     useEffect(() => {
         function handleClickOutside(event) {
@@ -76,7 +86,14 @@ const MainPage = () => {
                                     <div>Benefits Plan Changes</div>
                                 )}
                                 {selectedCategory === 'birthday' && (
-                                    <div>Birthday Notifications</div>
+                                    <div>
+                                        <ToggleButton isToggled={isToggled} handleToggle={handleToggle} />
+                                        {isToggled ? (
+                                            <BirthDays />
+                                        ) : (
+                                            <div>Birthday Notifications</div>
+                                        )}
+                                    </div>
                                 )}
                             </div>
                         </div>

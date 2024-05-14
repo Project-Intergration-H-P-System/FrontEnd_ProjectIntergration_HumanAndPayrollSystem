@@ -4,8 +4,8 @@ import BirthDays from './component/SetAlerts/SetAlertBirthday/SetAlerBirthday';
 function App() {
   return (
     <div>
-      {/* <MainPage /> */}
-      <BirthDays />
+      <MainPage />
+      {/* <BirthDays /> */}
     </div>
   );
 }

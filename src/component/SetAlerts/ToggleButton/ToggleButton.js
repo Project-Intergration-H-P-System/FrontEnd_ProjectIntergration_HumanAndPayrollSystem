@@ -2,13 +2,8 @@ import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faToggleOn, faToggleOff } from '@fortawesome/free-solid-svg-icons';
 
-function ToggleButton() {
-    const [isToggled, setIsToggled] = useState(false);
-
-    const handleToggle = () => {
-        setIsToggled(!isToggled);
-    };
-
+function ToggleButton({ isToggled, handleToggle }) {
+    
     return (
         <div onClick={handleToggle} style={{ cursor: 'pointer' }}>
             {/* Sử dụng icon cho trạng thái bật/tắt và chỉnh màu sắc */}

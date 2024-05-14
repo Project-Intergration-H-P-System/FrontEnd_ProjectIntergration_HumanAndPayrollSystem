@@ -11,6 +11,10 @@ import {
 // Sidebar Data
 export const SlideBarData = [
     {
+        icon: UilEstate,
+        heading: 'DashBoard'
+    },
+    {
         icon: UilClipboardAlt,
         heading: "Employee list",
     },
@@ -26,10 +30,7 @@ export const SlideBarData = [
         icon: UilChart,
         heading: 'Employee benefits'
     },
-    {
-        icon: UilBell,
-        heading: 'Set Alerts'
-    },
+
 ];
 
 

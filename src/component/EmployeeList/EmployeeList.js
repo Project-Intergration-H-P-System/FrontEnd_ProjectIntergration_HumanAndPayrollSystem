@@ -13,7 +13,7 @@ import ModalDelete from './ModelDelete';
 import ViewEmployeeList from './ViewEmployeeList';
 
 
-function EmployeeList() {
+function EmployeeList({ setSelected, setTotalEmployees }) {
     const [isOpen, setIsOpen] = useState(false);
     const [isUpdateOpen, setUpdateOpen] = useState(false);
     const [isDeleteOpen, setDeleteOpen] = useState(false);
@@ -80,7 +80,8 @@ function EmployeeList() {
         const fetchData = async () => {
             try {
                 const response = await axios.get('http://localhost:8080/list');
-                console.log(response)
+                setTotalEmployees(response.data.length);
+                // console.log(response)
                 setEmployees(response.data);
                 setOriginalEmployees(response.data);
                 setLoading(false);

@@ -9,12 +9,14 @@ import SetAlerts from "../SetAlerts/SetAlerts";
 import EmployeeList from "../EmployeeList/EmployeeList";
 import QuanityOfLeaveDays from "../QuantityOfLeaveDays/QuanityOfLeaveDays";
 import TotalIncome from "../TotalIncome/TotalIncome";
+import DashBoard from "../DashBoard/DashBoard";
+
+
 
 const SlideBar = () => {
     const [selected, setSelected] = useState(0);
-
-    const [expanded, setExpaned] = useState(true)
-
+    const [expanded, setExpanded] = useState(true);
+    const [totalEmployees, setTotalEmployees] = useState(0);
     const sidebarVariants = {
         true: {
             left: '0'
@@ -22,46 +24,52 @@ const SlideBar = () => {
         false: {
             left: '-60%'
         }
-    }
-    console.log(window.innerWidth)
+    };
+
+    const handleMenuClick = (index) => {
+        setSelected(index);
+    };
+
     return (
         <>
-            <div >
-                <div className="bars" style={expanded ? { left: '60%' } : { left: '5%' }} onClick={() => setExpaned(!expanded)}>
-                    <UilBars />
+            <div>
+                <div>
+                    <div className="bars" style={expanded ? { left: '60%' } : { left: '5%' }} onClick={() => setExpanded(!expanded)}>
+                        <UilBars />
+                    </div>
+                    <motion.div className='sidebar'
+                        variants={sidebarVariants}
+                        animate={window.innerWidth <= 768 ? `${expanded}` : ''}
+                    >
+                        {/* logo */}
+                        <div>
+                            <img src={Logo} alt="logo" width="250" height="200" style={{ marginTop: "-100px", marginBottom: "-100px" }} />
+                        </div>
+
+                        <div className="menu">
+                            {SlideBarData.map((item, index) => {
+                                return (
+                                    <div
+                                        className={selected === index ? "menuItem active" : "menuItem"}
+                                        key={index}
+                                        onClick={() => handleMenuClick(index)}
+                                    >
+                                        <item.icon />
+                                        <span>{item.heading}</span>
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    </motion.div>
                 </div>
-                <motion.div className='sidebar'
-                    variants={sidebarVariants}
-                    animate={window.innerWidth <= 768 ? `${expanded}` : ''}
-                >
-                    {/* logo */}
-                    <div >
-                        <img src={Logo} alt="logo" width="250" height="250" style={{ marginTop: "-200px", marginBottom: "-120px", marginLeft: '5px' }} />
-                    </div>
+                <div>
+                    {selected === 0 && <DashBoard setSelected={setSelected} totalEmployees={totalEmployees} />}
+                    {selected === 1 && <EmployeeList setSelected={setSelected} setTotalEmployees={setTotalEmployees} />}
+                    {selected === 2 && <TotalIncome />}
+                    {selected === 3 && <QuanityOfLeaveDays />}
+                    {selected === 4 && <EmployeeBenefits />}
 
-                    <div className="menu">
-                        {SlideBarData.map((item, index) => {
-                            return (
-                                <div
-                                    className={selected === index ? "menuItem active" : "menuItem"}
-                                    key={index}
-                                    onClick={() => setSelected(index)}
-                                >
-                                    <item.icon />
-                                    <span>{item.heading}</span>
-                                </div>
-                            );
-                        })}
-
-                    </div>
-                </motion.div>
-                {/* Render the selected component */}
-                {selected === 0 && <EmployeeList />}
-                {selected === 1 && <TotalIncome />}
-                {selected === 2 && <QuanityOfLeaveDays />}
-                {selected === 3 && <EmployeeBenefits />}
-                {selected === 4 && <SetAlerts />}
-
+                </div>
             </div>
         </>
     );
