@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./SlideBar.css";
 import Logo from "../../assets/image/logo.png";
 import { SlideBarData } from "./data/Data";
@@ -7,11 +7,12 @@ import { motion } from "framer-motion";
 import QuanityOfLeaveDays from '../QuantityOfLeaveDays/QuanityOfLeaveDays';
 import EmployeeList from "../EmployeeList/EmployeeList";
 import TotalIncome from '../TotalIncome/TotalIncome';
+import DashBoard from "../DashBoard/DashBoard";
+
 const SlideBar = () => {
     const [selected, setSelected] = useState(0);
-
-    const [expanded, setExpaned] = useState(true)
-
+    const [expanded, setExpanded] = useState(true);
+    const [totalEmployees, setTotalEmployees] = useState(0);
     const sidebarVariants = {
         true: {
             left: '0'
@@ -19,12 +20,17 @@ const SlideBar = () => {
         false: {
             left: '-60%'
         }
-    }
+    };
+
+    const handleMenuClick = (index) => {
+        setSelected(index);
+    };
+
     return (
         <>
             <div>
-                <div >
-                    <div className="bars" style={expanded ? { left: '60%' } : { left: '5%' }} onClick={() => setExpaned(!expanded)}>
+                <div>
+                    <div className="bars" style={expanded ? { left: '60%' } : { left: '5%' }} onClick={() => setExpanded(!expanded)}>
                         <UilBars />
                     </div>
                     <motion.div className='sidebar'
@@ -32,7 +38,7 @@ const SlideBar = () => {
                         animate={window.innerWidth <= 768 ? `${expanded}` : ''}
                     >
                         {/* logo */}
-                        <div >
+                        <div>
                             <img src={Logo} alt="logo" width="250" height="200" style={{ marginTop: "-100px", marginBottom: "-100px" }} />
                         </div>
 
@@ -42,26 +48,24 @@ const SlideBar = () => {
                                     <div
                                         className={selected === index ? "menuItem active" : "menuItem"}
                                         key={index}
-                                        onClick={() => setSelected(index)}
+                                        onClick={() => handleMenuClick(index)}
                                     >
                                         <item.icon />
                                         <span>{item.heading}</span>
                                     </div>
                                 );
                             })}
-
                         </div>
                     </motion.div>
                 </div>
                 <div>
-                    {selected === 0 && <EmployeeList />}
-                    {selected === 1 && <TotalIncome />}
-                    {selected === 2 && <QuanityOfLeaveDays />}
-
+                    {selected === 0 && <DashBoard setSelected={setSelected} totalEmployees={totalEmployees} />}
+                    {selected === 1 && <EmployeeList setSelected={setSelected} setTotalEmployees={setTotalEmployees} />}
+                    {selected === 2 && <TotalIncome />}
+                    {selected === 3 && <QuanityOfLeaveDays />}
                 </div>
             </div>
         </>
-
     );
 };
 

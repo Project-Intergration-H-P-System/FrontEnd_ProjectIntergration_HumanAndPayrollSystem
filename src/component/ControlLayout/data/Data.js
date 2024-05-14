@@ -4,10 +4,15 @@ import {
     UilUsdCircle,
     UilCalendarAlt,
     UilChart,
+    UilEstate,
 } from "@iconscout/react-unicons";
 
 // Sidebar Data
 export const SlideBarData = [
+    {
+        icon: UilEstate,
+        heading: "Dashboard",
+    },
     {
         icon: UilClipboardAlt,
         heading: "Employee list",
@@ -18,7 +23,7 @@ export const SlideBarData = [
     },
     {
         icon: UilCalendarAlt,
-        heading: 'Quantity of leave days'
+        heading: 'Quantity of leave days',
     },
     {
         icon: UilChart,

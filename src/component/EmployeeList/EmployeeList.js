@@ -11,9 +11,9 @@ import UpdateEmployeeList from './UpdateEmployeeList'
 import SearchEmployeeList from './SearchEmployeeList';
 import ModalDelete from './ModelDelete';
 import ViewEmployeeList from './ViewEmployeeList';
+import Dashboard from '../DashBoard/DashBoard';
 
-
-function EmployeeTable() {
+function EmployeeTable({ setSelected, setTotalEmployees }) {
     const [isOpen, setIsOpen] = useState(false);
     const [isUpdateOpen, setUpdateOpen] = useState(false);
     const [isDeleteOpen, setDeleteOpen] = useState(false);
@@ -25,8 +25,6 @@ function EmployeeTable() {
     const [idToUpdate, setIdToUpdate] = useState(null);
     const [isViewOpen, setIsViewOpen] = useState(false);
     const [viewedEmployee, setViewedEmployee] = useState(null);
-
-
 
     const handleSearch = (searchTerm) => {
         setSearchTerm(searchTerm);
@@ -41,9 +39,6 @@ function EmployeeTable() {
             }
         }
     };
-
-
-
 
     const handleViewClick = (employee) => {
         setViewedEmployee(employee);
@@ -75,7 +70,6 @@ function EmployeeTable() {
         }
     };
 
-
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -83,6 +77,7 @@ function EmployeeTable() {
                 console.log(response)
                 setEmployees(response.data);
                 setOriginalEmployees(response.data);
+                setTotalEmployees(response.data.length);
                 setLoading(false);
             } catch (error) {
                 console.error('Error fetching data:', error);
@@ -103,7 +98,6 @@ function EmployeeTable() {
     const handleMouseLeave = (event) => {
         event.currentTarget.querySelector('.view').style.opacity = 0;
     };
-
 
     return (
         <div className="employee-list">
