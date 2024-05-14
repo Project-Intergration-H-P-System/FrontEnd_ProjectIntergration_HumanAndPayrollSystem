@@ -24,12 +24,59 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Arial', sans-serif;
   }
+
   
-  .Bell-main{
+ .Bell-main{
     position: absolute;
     top: 8%;
     right: 10%;
     cursor: pointer;
+    border-radius: 15px;
   }
+
+.notification-dropdown {
+  position: absolute;
+  top: 110%;
+  right: 0%;
+  background-color: var(--glass); 
+  border: 1px solid var(--gray); 
+  overflow-y: auto;
+  border-radius: 10px;
+  box-shadow: var(--boxShadow); 
+  z-index: 1000; 
+  width: 30vw; 
+  max-height: 85vh;
+}
+
+.notification-options {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.notification-option {
+  flex: 1 0 20%; /* Mỗi mục chiếm 25% chiều rộng */
+  padding: 10px;
+  cursor: pointer;
+  color: var(--black);
+  transition: background-color 0.3s ease;
+  border-right: 1px solid var(--gray);
+  border-bottom: 1px solid var(--gray);
+  font-weight: bold;
+}
+.notification-option:last-child {
+  border-right: none; /* Loại bỏ kẻ phân tách cho mục cuối cùng */
+}
+
+.notification-option:hover {
+  background: #ce81a454;
+}
+.notification-option.active {
+  background-color: #cb468254;  
+
+}
+
+.notification-content {
+  padding: 20px;
+}
