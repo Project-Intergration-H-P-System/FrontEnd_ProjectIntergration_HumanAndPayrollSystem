@@ -13,11 +13,7 @@ const MainPage = () => {
     const [selectedCategory, setSelectedCategory] = useState(null);
     const bellRef = useRef(null);
 
-    const [isToggled, setIsToggled] = useState(false);
 
-    const handleToggle = () => {
-        setIsToggled(!isToggled);
-    };
 
 
     useEffect(() => {
@@ -76,7 +72,8 @@ const MainPage = () => {
                             </div>
                             <div className="notification-content">
                                 {/* Nội dung của dropdown */}
-                                {selectedCategory === 'anniversary' && (
+                                <h4>Notifications</h4>
+                                {/* {selectedCategory === 'anniversary' && (
                                     <div>Anniversary Reminders</div>
                                 )}
                                 {selectedCategory === 'exceeded' && (
@@ -84,16 +81,9 @@ const MainPage = () => {
                                 )}
                                 {selectedCategory === 'benefits' && (
                                     <div>Benefits Plan Changes</div>
-                                )}
+                                )} */}
                                 {selectedCategory === 'birthday' && (
-                                    <div>
-                                        <ToggleButton isToggled={isToggled} handleToggle={handleToggle} />
-                                        {isToggled ? (
-                                            <BirthDays />
-                                        ) : (
-                                            <div>Birthday Notifications</div>
-                                        )}
-                                    </div>
+                                    <BirthDays />
                                 )}
                             </div>
                         </div>

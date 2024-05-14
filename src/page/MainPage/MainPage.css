@@ -53,6 +53,10 @@
 .notification-options {
   display: flex;
   flex-wrap: wrap;
+  position: sticky;
+  top: 0;
+  background-color: #fff; 
+  z-index: 999;
 }
 
 .notification-option {
@@ -78,5 +82,5 @@
 }
 
 .notification-content {
-  padding: 20px;
+  padding: 10px;
 }

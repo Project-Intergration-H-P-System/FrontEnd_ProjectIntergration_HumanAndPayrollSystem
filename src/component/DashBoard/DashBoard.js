@@ -12,10 +12,6 @@ const Dashboard = ({ setSelected, totalEmployees }) => {
         // Implement your logic for notifications
     };
 
-    const handleCalendarClick = () => {
-        // Implement your logic for calendar
-    };
-    const [chartData, setChartData] = useState(null);
     useEffect(() => {
         let vacationDaysChart;
 
