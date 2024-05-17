@@ -94,6 +94,7 @@ const TotalIncome = () => {
                         <option value="">Department</option>
                         <option value="DEV">DEV</option>
                         <option value="BA">BA</option>
+                        <option value="TESTER">TESTER</option>
                     </select>
                     <div className="search-button-container">
                         <button className='btn-search' onClick={handleSearch}>Search</button>

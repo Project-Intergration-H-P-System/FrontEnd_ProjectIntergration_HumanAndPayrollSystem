@@ -2,7 +2,12 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './DashBoard.css';
 import Chart from 'chart.js/auto';
-const Dashboard = ({ setSelected, totalEmployees }) => {
+
+const Dashboard = ({ setSelected }) => {
+
+    const [totalEmployment, setTotalEmployment] = useState(0);
+    const [totalAlert, setTotalAlert] = useState(0);
+
 
     const handleEmployeeClick = () => {
         setSelected(1);
@@ -65,6 +70,7 @@ const Dashboard = ({ setSelected, totalEmployees }) => {
             try {
                 const response = await axios.get('http://localhost:8080/total');
                 const data = response.data;
+                setTotalEmployment(response.data.length)
 
                 const employeeNames = data.map(employee => employee.FULLNAME);
                 const SALARY = data.map(employee => employee.SALARY);
@@ -105,6 +111,26 @@ const Dashboard = ({ setSelected, totalEmployees }) => {
         };
     }, []);
 
+
+    useEffect(() => {
+
+        const fetch_totalAlert = async () => {
+            try {
+                const birtday = await axios.get('http://localhost:8080/alert/birtday');
+                const aniversary = await axios.get('http://localhost:8080/alert/aniversary');
+                const vacation = await axios.get('http://localhost:8080/alert/vacation');
+
+                setTotalAlert(birtday.data.length + aniversary.data.length+vacation.data.length);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+
+        };
+
+        fetch_totalAlert();
+
+    }, []);
+
     return (
         <div className="dashboard">
             <div className='loca-heading'>
@@ -117,7 +143,7 @@ const Dashboard = ({ setSelected, totalEmployees }) => {
                     <div className="icon"><i className="fas fa-users"></i></div>
                     <div className="content">
                         <h3>Employee</h3>
-                        <p>{totalEmployees}</p> {/* Hiển thị số lượng nhân viên */}
+                        <p>{totalEmployment}</p>
 
                     </div>
                 </div>
@@ -125,7 +151,7 @@ const Dashboard = ({ setSelected, totalEmployees }) => {
                     <div className="icon"><i className="fas fa-bell"></i></div>
                     <div className="content">
                         <h3>Notification</h3>
-                        <p>4</p>
+                        <p>{totalAlert}</p>
                     </div>
                 </div>
                 {/* <div className="dashboard-item calendar" onClick={handleCalendarClick}>

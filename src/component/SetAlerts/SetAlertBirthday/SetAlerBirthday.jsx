@@ -8,8 +8,7 @@ const BirthDays = () => {
     const [notiData, setNotiData] = useState([]);
 
     const test = BirthdayNotification({ data: notiData });
-    // console.log(notiData);
-    // console.log(test);
+
 
     useEffect(() => {
         const fetchBirthdayData = async () => {

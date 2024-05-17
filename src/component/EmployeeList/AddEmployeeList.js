@@ -13,6 +13,7 @@ function AddEmployeeList({ isOpen, closeModal, setEmployees }) {
         ssNumber: '',
         driver: '',
         address: '',
+        address2: '',
         country: '',
         zip: '',
         gender: '',
@@ -31,7 +32,9 @@ function AddEmployeeList({ isOpen, closeModal, setEmployees }) {
         prid: '',
         pd: '',
         py: '',
-        depart: ''
+        depart: '',
+        hireDate: '',
+        terminationDate: ''
     });
 
     const handleChange = (e) => {

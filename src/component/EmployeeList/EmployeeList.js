@@ -13,7 +13,7 @@ import ModalDelete from './ModelDelete';
 import ViewEmployeeList from './ViewEmployeeList';
 
 
-function EmployeeList({ setSelected, setTotalEmployees }) {
+function EmployeeList({ setSelected }) {
     const [isOpen, setIsOpen] = useState(false);
     const [isUpdateOpen, setUpdateOpen] = useState(false);
     const [isDeleteOpen, setDeleteOpen] = useState(false);
@@ -80,8 +80,6 @@ function EmployeeList({ setSelected, setTotalEmployees }) {
         const fetchData = async () => {
             try {
                 const response = await axios.get('http://localhost:8080/list');
-                setTotalEmployees(response.data.length);
-                // console.log(response)
                 setEmployees(response.data);
                 setOriginalEmployees(response.data);
                 setLoading(false);
@@ -139,9 +137,9 @@ function EmployeeList({ setSelected, setTotalEmployees }) {
                             <th className="column-header">Shareholder Status</th>
                             <th className="column-header">Gender</th>
                             <th className="column-header">Ethnicity</th>
-                            <th className="column-header">Country</th>
+                            <th className="column-header">City</th>
                             <th className="column-header">Employment Status</th>
-                            <th className="column-header">Vacation Day</th>
+                            {/* <th className="column-header">Vacation Day</th> */}
                             <th className="column-header-action">Action</th>
                         </tr>
                     </thead>
@@ -153,9 +151,9 @@ function EmployeeList({ setSelected, setTotalEmployees }) {
                                 <td className="table-cell">{employee.SHAREHOLDER_STATUS === 1 ? "Yes" : "No"}</td>
                                 <td className="table-cell">{employee.CURRENT_GENDER}</td>
                                 <td className="table-cell">{employee.ETHNICITY}</td>
-                                <td className="table-cell">{employee.CURRENT_COUNTRY}</td>
+                                <td className="table-cell">{employee.CURRENT_ADDRESS_2}</td>
                                 <td className="table-cell">{employee.EMPLOYMENT_STATUS}</td>
-                                <td className="table-cell">{employee.VacationDays}</td>
+                                {/* <td className="table-cell">{employee.VacationDays}</td> */}
                                 <td className="table-cell">
                                     <div className="icon-buttons-container">
                                         <button

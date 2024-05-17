@@ -63,9 +63,9 @@ const MainPage = () => {
                                 <div className="notification-option" onClick={(event) => handleCategoryClick('exceeded', event)}>
                                     Exceeded Vacation Days
                                 </div>
-                                <div className="notification-option" onClick={(event) => handleCategoryClick('benefits', event)}>
+                                {/* <div className="notification-option" onClick={(event) => handleCategoryClick('benefits', event)}>
                                     Benefits Plan Changes
-                                </div>
+                                </div> */}
                                 <div className="notification-option" onClick={(event) => handleCategoryClick('birthday', event)}>
                                     Birthday Current Month
                                 </div>
@@ -73,15 +73,6 @@ const MainPage = () => {
                             <div className="notification-content">
                                 {/* Nội dung của dropdown */}
                                 <h4>Notifications</h4>
-                                {/* {selectedCategory === 'anniversary' && (
-                                    <div>Anniversary Reminders</div>
-                                )}
-                                {selectedCategory === 'exceeded' && (
-                                    <div>Exceeded Vacation Days</div>
-                                )}
-                                {selectedCategory === 'benefits' && (
-                                    <div>Benefits Plan Changes</div>
-                                )} */}
                                 {selectedCategory === 'birthday' && (
                                     <BirthDays />
                                 )}

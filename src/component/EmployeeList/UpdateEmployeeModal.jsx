@@ -20,6 +20,7 @@ const UpdateEmployeeModal = ({ isOpen, closeModal, updateEmployee, handleChange,
                             type="text"
                             name="firstName"
                             value={updateEmployee.firstName}
+                            placeholder='Enter first name'
                             onChange={handleChange}
                             className="modal-input"
                         />
@@ -30,6 +31,7 @@ const UpdateEmployeeModal = ({ isOpen, closeModal, updateEmployee, handleChange,
                             type="text"
                             name="middleName"
                             value={updateEmployee.middleName}
+                            placeholder='Enter middle name'
                             onChange={handleChange}
                             className="modal-input"
                         />
@@ -40,6 +42,7 @@ const UpdateEmployeeModal = ({ isOpen, closeModal, updateEmployee, handleChange,
                             type="text"
                             name="lastName"
                             value={updateEmployee.lastName}
+                            placeholder='Enter last name'
                             onChange={handleChange}
                             className="modal-input"
                         />
@@ -61,26 +64,40 @@ const UpdateEmployeeModal = ({ isOpen, closeModal, updateEmployee, handleChange,
                             type="text"
                             name="ssNumber"
                             value={updateEmployee.ssNumber}
+                            placeholder='Enter ssNumber '
                             onChange={handleChange}
                             className="modal-input"
                         />
                     </div>
                     <div className="modal-row">
-                        <div className="modal-label">DRIVERS LICENSE:</div>
+                        <div className="modal-label">Drivers License:</div>
                         <input
                             type="text"
                             name="driver"
                             value={updateEmployee.driver}
+                            placeholder='Enter driver license '
                             onChange={handleChange}
                             className="modal-input"
                         />
                     </div>
                     <div className="modal-row">
-                        <div className="modal-label">ADDRESS:</div>
+                        <div className="modal-label">Current address1:</div>
                         <input
                             type="text"
                             name="address"
                             value={updateEmployee.address}
+                            placeholder='Enter address '
+                            onChange={handleChange}
+                            className="modal-input"
+                        />
+                    </div>
+                    <div className="modal-row">
+                        <div className="modal-label">Current address2:</div>
+                        <input
+                            type="text"
+                            name="address2"
+                            value={updateEmployee.address2}
+                            placeholder='Enter address2 '
                             onChange={handleChange}
                             className="modal-input"
                         />
@@ -91,16 +108,18 @@ const UpdateEmployeeModal = ({ isOpen, closeModal, updateEmployee, handleChange,
                             type="text"
                             name="country"
                             value={updateEmployee.country}
+                            placeholder='Enter country '
                             onChange={handleChange}
                             className="modal-input"
                         />
                     </div>
                     <div className="modal-row">
-                        <div className="modal-label">ZIP:</div>
+                        <div className="modal-label">Zip:</div>
                         <input
                             type="number"
                             name="zip"
                             value={updateEmployee.zip}
+                            placeholder='Enter zip (number) '
                             onChange={handleChange}
                             className="modal-input"
                         />
@@ -111,6 +130,7 @@ const UpdateEmployeeModal = ({ isOpen, closeModal, updateEmployee, handleChange,
                             type="text"
                             name="phoneNumber"
                             value={updateEmployee.phoneNumber}
+                            placeholder='Enter phoneNumber '
                             onChange={handleChange}
                             className="modal-input"
                         />
@@ -121,6 +141,7 @@ const UpdateEmployeeModal = ({ isOpen, closeModal, updateEmployee, handleChange,
                             type="text"
                             name="email"
                             value={updateEmployee.email}
+                            placeholder='Enter email '
                             onChange={handleChange}
                             className="modal-input"
                         />
@@ -131,6 +152,7 @@ const UpdateEmployeeModal = ({ isOpen, closeModal, updateEmployee, handleChange,
                             type="text"
                             name="prname"
                             value={updateEmployee.prname}
+                            placeholder='Enter PayRate '
                             onChange={handleChange}
                             className="modal-input"
                         />
@@ -141,6 +163,7 @@ const UpdateEmployeeModal = ({ isOpen, closeModal, updateEmployee, handleChange,
                             type="number"
                             name="vacations"
                             value={updateEmployee.vacations}
+                            placeholder='Enter vacations(number) '
                             onChange={handleChange}
                             className="modal-input"
                         />
@@ -151,6 +174,7 @@ const UpdateEmployeeModal = ({ isOpen, closeModal, updateEmployee, handleChange,
                             type="number"
                             name="pd"
                             value={updateEmployee.pd}
+                            placeholder='Enter PaidToDate(number) '
                             onChange={handleChange}
                             className="modal-input"
                         />
@@ -161,54 +185,76 @@ const UpdateEmployeeModal = ({ isOpen, closeModal, updateEmployee, handleChange,
                             type="number"
                             name="py"
                             value={updateEmployee.py}
+                            placeholder='Enter PaidLastYear(number) '
                             onChange={handleChange}
                             className="modal-input"
                         />
                     </div>
                     <div className="modal-row">
-                        <div className="modal-label">EMPLOYMENT CODE:</div>
+                        <div className="modal-label">Employment Code:</div>
                         <input
                             type="text"
                             name="ecode"
                             value={updateEmployee.ecode}
-                            placeholder='540-*'
+                            placeholder='Enter employment code(540*)'
                             onChange={handleChange}
                             className="modal-input"
                         />
                     </div>
                     <div className="modal-row">
-                        <div className="modal-label">WORKERS COMP CODE:</div>
+                        <div className="modal-label">Worker Comp Code:</div>
                         <input
                             type="text"
                             name="workcode"
                             value={updateEmployee.workcode}
-                            placeholder='C#,Java,Nodejs'
+                            placeholder='Enter workcode'
                             onChange={handleChange}
                             className="modal-input"
                         />
                     </div>
                     <div className="modal-row">
-                        <div className="modal-label">NUMBER DAYS REQUIREMENT OF WORKING:</div>
+                        <div className="modal-label">Days Of Work:</div>
                         <input
                             type="text"
                             name="number"
                             value={updateEmployee.number}
+                            placeholder='Enter workingday'
+                            onChange={handleChange}
+                            className="modal-input"
+                        />
+                    </div>
+                    <div className="modal-row">
+                        <div className="modal-label">Hire Day:</div>
+                        <input
+                            type="date"
+                            name="hireDate"
+                            value={updateEmployee.hireDate}
+                            placeholder='Enter hireDate'
+                            onChange={handleChange}
+                            className="modal-input"
+                        />
+                    </div>
+                    <div className="modal-row">
+                        <div className="modal-label">Terminate Day:</div>
+                        <input
+                            type="date"
+                            name="terminationDate"
+                            value={updateEmployee.terminationDate}
+                            placeholder='Enter terminationDate'
                             onChange={handleChange}
                             className="modal-input"
                         />
                     </div>
                     <div className="modal-row">
                         <div className="modal-label">Ethnicity:</div>
-                        <select
+                        <input
+                            type="text"
                             name="ethnicity"
                             value={updateEmployee.ethnicity}
+                            placeholder='Enter ethnicity'
                             onChange={handleChange}
                             className="modal-input"
-                        >
-                            <option value="">Select ethnicity</option>
-                            <option value="Kinh      ">Kinh</option>
-                            <option value="Tay       ">Tay</option>
-                        </select>
+                        />
                     </div>
                     <div className="modal-row">
                         <div className="modal-label">Gender:</div>
@@ -224,7 +270,7 @@ const UpdateEmployeeModal = ({ isOpen, closeModal, updateEmployee, handleChange,
                         </select>
                     </div>
                     <div className="modal-row">
-                        <div className="modal-label">MARITAL STATUS:</div>
+                        <div className="modal-label">Marital Status:</div>
                         <select
                             name="marital"
                             value={updateEmployee.marital}
@@ -258,9 +304,9 @@ const UpdateEmployeeModal = ({ isOpen, closeModal, updateEmployee, handleChange,
                             className="modal-input"
                         >
                             <option value="">Select benefit id</option>
-                            <option value="1">Luongki1</option>
+                            <option value="1">Wage</option>
                             <option value="2">Bonus</option>
-                            <option value="3">ThuongTet</option>
+                            <option value="3">Allowance</option>
                         </select>
                     </div>
                     <div className="modal-row">
@@ -272,9 +318,9 @@ const UpdateEmployeeModal = ({ isOpen, closeModal, updateEmployee, handleChange,
                             className="modal-input"
                         >
                             <option value="">Select id payrate</option>
-                            <option value="11">PR01</option>
-                            <option value="22">PR02</option>
-                            <option value="33">PR03</option>
+                            <option value="11">Wage</option>
+                            <option value="22">Bonus</option>
+                            <option value="33">Allowance</option>
                         </select>
                     </div>
                     <div className="modal-row">
@@ -301,6 +347,7 @@ const UpdateEmployeeModal = ({ isOpen, closeModal, updateEmployee, handleChange,
                             <option value="">Select employstatus</option>
                             <option value="DEV">DEV</option>
                             <option value="BA">BA</option>
+                            <option value="TESTER">TESTER</option>
                         </select>
                     </div>
                     <div className="modal-buttons">

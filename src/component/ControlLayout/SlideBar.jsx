@@ -5,7 +5,7 @@ import { SlideBarData } from "./data/Data";
 import { UilBars } from "@iconscout/react-unicons";
 import { motion } from "framer-motion";
 import EmployeeBenefits from "../EmployeeBenefits/EmployeeBenefits";
-import SetAlerts from "../SetAlerts/SetAlerts";
+import MainPage from "../../page/MainPage/MainPage";
 import EmployeeList from "../EmployeeList/EmployeeList";
 import QuanityOfLeaveDays from "../QuantityOfLeaveDays/QuanityOfLeaveDays";
 import TotalIncome from "../TotalIncome/TotalIncome";
@@ -64,11 +64,10 @@ const SlideBar = () => {
                 </div>
                 <div>
                     {selected === 0 && <DashBoard setSelected={setSelected} totalEmployees={totalEmployees} />}
-                    {selected === 1 && <EmployeeList setSelected={setSelected} setTotalEmployees={setTotalEmployees} />}
+                    {selected === 1 && <EmployeeList setSelected={setSelected} />}
                     {selected === 2 && <TotalIncome />}
                     {selected === 3 && <QuanityOfLeaveDays />}
                     {selected === 4 && <EmployeeBenefits />}
-
                 </div>
             </div>
         </>
