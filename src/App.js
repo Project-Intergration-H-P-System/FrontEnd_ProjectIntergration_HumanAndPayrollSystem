@@ -1,11 +1,11 @@
 import MainPage from './page/MainPage/MainPage';
-import BirthDays from './component/SetAlerts/SetAlertBirthday/SetAlerBirthday';
+import Anniversary from './component/SetAlerts/SetAlertHiringAnniversary/SetAlertHiringAnniversary.jsx';
 
 function App() {
   return (
     <div>
       <MainPage />
-      {/* <BirthDays /> */}
+      {/* <Anniversary /> */}
     </div>
   );
 }

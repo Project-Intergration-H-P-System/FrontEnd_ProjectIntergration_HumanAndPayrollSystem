@@ -10,6 +10,7 @@ import EmployeeList from "../EmployeeList/EmployeeList";
 import QuanityOfLeaveDays from "../QuantityOfLeaveDays/QuanityOfLeaveDays";
 import TotalIncome from "../TotalIncome/TotalIncome";
 import DashBoard from "../DashBoard/DashBoard";
+import Notifications from "../Notifications/Notifications";
 
 
 
@@ -68,6 +69,7 @@ const SlideBar = () => {
                     {selected === 2 && <TotalIncome />}
                     {selected === 3 && <QuanityOfLeaveDays />}
                     {selected === 4 && <EmployeeBenefits />}
+                    {selected === 5 && <Notifications />}
                 </div>
             </div>
         </>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './DashBoard.css';
 import Chart from 'chart.js/auto';
+import Uilbelll from '../UilBell/UilBell';
 
 const Dashboard = ({ setSelected }) => {
 
@@ -14,7 +15,7 @@ const Dashboard = ({ setSelected }) => {
     };
 
     const handleNotificationClick = () => {
-        // Implement your logic for notifications
+        setSelected(5);
     };
 
     useEffect(() => {
@@ -120,7 +121,7 @@ const Dashboard = ({ setSelected }) => {
                 const aniversary = await axios.get('http://localhost:8080/alert/aniversary');
                 const vacation = await axios.get('http://localhost:8080/alert/vacation');
 
-                setTotalAlert(birtday.data.length + aniversary.data.length+vacation.data.length);
+                setTotalAlert(birtday.data.length + aniversary.data.length + vacation.data.length);
             } catch (error) {
                 console.error('Error fetching data:', error);
             }

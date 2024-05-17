@@ -1,0 +1,68 @@
+.container_page_notifications {
+    position: absolute;
+    top: 20%;
+    left: 82%;
+}
+
+.notification-dropdown {
+    position: absolute;
+    top: 110%;
+    right: 10%;
+    background-color: var(--glass); 
+    border: 1px solid var(--gray); 
+    overflow-y: auto;
+    border-radius: 10px;
+    box-shadow: var(--boxShadow); 
+    z-index: 1000; 
+    width: 70vw; 
+    max-height: 85vh;
+  }
+  
+  .notification-options {
+    display: flex;
+    flex-wrap: wrap;
+    position: sticky;
+    top: 0;
+    background-color: #fff; 
+    z-index: 999;
+  }
+  
+  .notification-option {
+    flex: 1 0 20%; /* Chia đều 3 cột trong flex container */
+    display: flex;
+    align-items: center; /* Căn giữa nội dung theo chiều dọc */
+    justify-content: center; /* Căn giữa nội dung theo chiều ngang */
+    padding: 20px;
+    cursor: pointer;
+    color: var(--black);
+    transition: background-color 0.3s ease;
+    border-right: 1px solid var(--gray);
+    border-bottom: 1px solid var(--gray);
+    font-weight: bold;
+  }
+  
+  .notification-option:last-child {
+    border-right: none; /* Loại bỏ kẻ phân tách cho mục cuối cùng */
+  }
+  
+  .notification-option:hover {
+    background: #ce81a454;
+  }
+  .notification-option.active {
+    background-color: #cb468254;  
+  
+  }
+  
+  .notification-content {
+    padding: 10px;
+  }
+
+.heading_notification {
+    font-size: 24px;
+    /* Kích cỡ chữ to hơn */
+    font-weight: bold;
+    /* Chữ in đậm */
+    position: absolute;
+
+  
+}

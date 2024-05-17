@@ -30,6 +30,10 @@ export const SlideBarData = [
         icon: UilChart,
         heading: 'Employee benefits'
     },
+    {
+        icon: UilBell,
+        heading: 'Notifications'
+    },
 
 ];
 

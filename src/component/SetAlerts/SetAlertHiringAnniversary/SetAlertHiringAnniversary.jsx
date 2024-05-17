@@ -1,32 +1,33 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Triangle from './Triangle';
-import BirthdayNotification from './SetAlertBirthday';
+import AnniversaryReminder from './SetAlertHiringAnniversary';
 import { Card } from 'antd';
 
-const BirthDays = () => {
+const Anniversary = () => {
     const [notiData, setNotiData] = useState([]);
 
-    const test = BirthdayNotification({ data: notiData });
+    const test = AnniversaryReminder({ data: notiData });
 
-
+    console.log(test);
     useEffect(() => {
-        const fetchBirthdayData = async () => {
+        const fetchHiringAnnivesaryData = async () => {
             try {
-                const response = await axios.get('http://localhost:8080/alert/birtday');
+                const response = await axios.get('http://localhost:8080/alert/aniversary');
                 const newData = response.data;
                 setNotiData(newData);
+
             } catch (error) {
                 console.error("Error fetching birthday data:", error);
             }
         };
 
-        fetchBirthdayData();
+        fetchHiringAnnivesaryData();
     }, []);
 
     const triangle = {
         size: '20px',
-        location: '82%',
+        location: '20%',
         color: '#cb468254',
     };
 
@@ -42,7 +43,7 @@ const BirthDays = () => {
                 {notifications.map((notification, index) => (
                     <Card key={index} >
                         <p><strong>Full Name: </strong>{notification.fullName}</p>
-                        <p><strong>Birthday: </strong>{notification.dateTime}</p>
+                        <p><strong>Hiring Anniversary: </strong>{notification.dateTime}</p>
                         <p><strong>State: </strong>{notification.message}</p>
                     </Card>
                 ))}
@@ -52,4 +53,4 @@ const BirthDays = () => {
     );
 };
 
-export default BirthDays;
+export default Anniversary;
