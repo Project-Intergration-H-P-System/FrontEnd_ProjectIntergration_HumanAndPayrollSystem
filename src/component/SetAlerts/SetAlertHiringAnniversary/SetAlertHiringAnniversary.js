@@ -64,12 +64,15 @@ function AnniversaryReminder({ data }) {
 
     //     return processedMessages;
     // }
+
+
+
     function processHiringAnniversary(data) {
         const today = new Date();
         const processedMessages = [];
 
         data.forEach(employee => {
-            const hireDate = new Date(employee.EMPLOYMENT.HIRE_DATE_FOR_WORKING);
+            const hireDate = new Date(employee["EMPLOYMENT.HIRE_DATE_FOR_WORKING"]);
             const oneYearInMilliseconds = 365 * 24 * 60 * 60 * 1000;
 
             // Check if the employee has been employed for at least one year

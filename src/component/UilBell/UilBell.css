@@ -1,0 +1,56 @@
+.Bell-main-UilBell{
+    position: absolute;
+    top: 8%;
+    right: 10%;
+    cursor: pointer;
+    border-radius: 15px;
+  }
+
+  .notification-dropdown-UilBell {
+    position: absolute;
+    top: 110%;
+    right: 0%;
+    background-color: var(--glass); 
+    border: 1px solid var(--gray); 
+    overflow-y: auto;
+    border-radius: 10px;
+    box-shadow: var(--boxShadow); 
+    z-index: 1000; 
+    width: 30vw; 
+    max-height: 85vh;
+  }
+  
+  .notification-options-UilBell {
+    display: flex;
+    flex-wrap: wrap;
+    position: sticky;
+    top: 0;
+    background-color: #fff; 
+    z-index: 999;
+  }
+  
+  .notification-option-UilBell {
+    flex: 1 0 20%; /* Mỗi mục chiếm 25% chiều rộng */
+    padding: 10px;
+    cursor: pointer;
+    color: var(--black);
+    transition: background-color 0.3s ease;
+    border-right: 1px solid var(--gray);
+    border-bottom: 1px solid var(--gray);
+    font-weight: bold;
+  }
+  .notification-option-UilBell:last-child {
+    border-right: none; /* Loại bỏ kẻ phân tách cho mục cuối cùng */
+  }
+  
+  .notification-option-UilBell:hover {
+    background: #ce81a454;
+  }
+  .notification-option-UilBell.active {
+    background-color: #cb468254;  
+  
+  }
+  
+  .notification-content-UilBell {
+    padding: 2px;
+  }

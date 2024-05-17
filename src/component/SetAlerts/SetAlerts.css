@@ -1,4 +1,4 @@
-.SetAlert-Module{
+/* .SetAlert-Module{
     width: 600px;
     height: 450px;
     border-radius: 10px;
@@ -27,7 +27,7 @@
 }
 .alert-row {
     display: flex;
-    grid-template-columns: 1fr auto; /* Chia mỗi dòng thành hai cột, với một phần chiếm toàn bộ width và một phần chứa ToggleButton */
+    grid-template-columns: 1fr auto; 
     align-items: center;
     margin-bottom: 10px;
   }
@@ -36,4 +36,4 @@
     position: absolute;
     top: 10%;
     left: 20%;
-}
+} */

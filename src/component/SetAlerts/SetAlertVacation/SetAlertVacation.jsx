@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Triangle from './Triangle';
-import AnniversaryReminder from './SetAlertHiringAnniversary';
+import ExceededVacation from './SetAlertVacation';
 import { Card } from 'antd';
 
-const Anniversary = () => {
+const Vacation = () => {
     const [notiData, setNotiData] = useState([]);
 
-    const test = AnniversaryReminder({ data: notiData });
+    const test = ExceededVacation({ data: notiData });
 
     console.log(test);
     useEffect(() => {
-        const fetchHiringAnnivesaryData = async () => {
+        const fetchVacationData = async () => {
             try {
-                const response = await axios.get('http://localhost:8080/alert/aniversary');
+                const response = await axios.get('http://localhost:8080/alert/vacation');
                 const newData = response.data;
                 setNotiData(newData);
 
@@ -22,12 +22,12 @@ const Anniversary = () => {
             }
         };
 
-        fetchHiringAnnivesaryData();
+        fetchVacationData();
     }, []);
 
     const triangle = {
         size: '20px',
-        location: '17%',
+        location: '50%',
         color: '#cb468254',
     };
 
@@ -42,7 +42,8 @@ const Anniversary = () => {
                 {notifications.map((notification, index) => (
                     <Card key={index} >
                         <p><strong>Full Name: </strong>{notification.fullName}</p>
-                        <p><strong>Hiring Anniversary: </strong>{notification.dateTime}</p>
+                        <p><strong>A certain number of days are allowed: </strong>{notification.NumberOfDaysOffAllowed}</p>
+                        <p><strong>Number of days taken leave: </strong>{notification.NumberOfDaysOff}</p>
                         <p><strong>State: </strong>{notification.message}</p>
                     </Card>
                 ))}
@@ -52,4 +53,4 @@ const Anniversary = () => {
     );
 };
 
-export default Anniversary;
+export default Vacation;

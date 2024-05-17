@@ -4,7 +4,7 @@ import { UilBell } from "@iconscout/react-unicons";
 import 'react-toastify/dist/ReactToastify.css';
 import BirthDays from '../../component/SetAlerts/SetAlertBirthday/SetAlerBirthday';
 import Anniversary from '../../component/SetAlerts/SetAlertHiringAnniversary/SetAlertHiringAnniversary.jsx';
-
+import Vacation from '../SetAlerts/SetAlertVacation/SetAlertVacation.jsx';
 
 const Uilbelll = ({ initialShowNotifications = false }) => {
   const [showNotifications, setShowNotifications] = useState(initialShowNotifications);
@@ -28,7 +28,7 @@ const Uilbelll = ({ initialShowNotifications = false }) => {
   }, []);
   const handleCategoryClick = (category, event) => {
     setSelectedCategory(category);
-    document.querySelectorAll('.notification-option').forEach((item) => {
+    document.querySelectorAll('.notification-option-UilBell').forEach((item) => {
       item.classList.remove('active');
     });
     event.target.classList.add('active');
@@ -45,31 +45,34 @@ const Uilbelll = ({ initialShowNotifications = false }) => {
 
   return (
     <div>
-      <button className='Bell-main' ref={bellRef}>
+      <button className='Bell-main-UilBell' ref={bellRef}>
         <UilBell onClick={toggleNotifications} />
         {showNotifications && (
           <div >
-            <div className="notification-dropdown" onClick={handleDropdownClick}>
-              <div className="notification-options">
-                <div className="notification-option" onClick={(event) => handleCategoryClick('anniversary', event)}>
+            <div className="notification-dropdown-UilBell" onClick={handleDropdownClick}>
+              <div className="notification-options-UilBell">
+                <div className="notification-option-UilBell" onClick={(event) => handleCategoryClick('anniversary', event)}>
                   Anniversary Reminder
                 </div>
-                <div className="notification-option" onClick={(event) => handleCategoryClick('exceeded', event)}>
+                <div className="notification-option-UilBell" onClick={(event) => handleCategoryClick('exceeded', event)}>
                   Exceeded Vacation Days
                 </div>
 
-                <div className="notification-option" onClick={(event) => handleCategoryClick('birthday', event)}>
+                <div className="notification-option-UilBell" onClick={(event) => handleCategoryClick('birthday', event)}>
                   Birthday Current Month
                 </div>
               </div>
-              <div className="notification-content">
-
-                <h4>Notifications</h4>
+              <div className="notification-content-UilBell">
+                {/* 
+                <h4>Notifications</h4> */}
                 {selectedCategory === 'birthday' && (
                   <BirthDays />
                 )}
                 {selectedCategory === 'anniversary' && (
                   <Anniversary />
+                )}
+                {selectedCategory === 'exceeded' && (
+                  <Vacation />
                 )}
               </div>
             </div>

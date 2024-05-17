@@ -1,11 +1,12 @@
 .container_page_notifications {
     position: absolute;
     top: 20%;
-    left: 82%;
+    left: 27%;
+    z-index: 1;
 }
 
 .notification-dropdown {
-    position: absolute;
+    position: relative;
     top: 110%;
     right: 10%;
     background-color: var(--glass); 
@@ -13,9 +14,9 @@
     overflow-y: auto;
     border-radius: 10px;
     box-shadow: var(--boxShadow); 
-    z-index: 1000; 
     width: 70vw; 
     max-height: 85vh;
+    margin-top: 2%;
   }
   
   .notification-options {
@@ -24,14 +25,13 @@
     position: sticky;
     top: 0;
     background-color: #fff; 
-    z-index: 999;
   }
   
   .notification-option {
-    flex: 1 0 20%; /* Chia đều 3 cột trong flex container */
+    flex: 1 0 20%; 
     display: flex;
-    align-items: center; /* Căn giữa nội dung theo chiều dọc */
-    justify-content: center; /* Căn giữa nội dung theo chiều ngang */
+    align-items: center; 
+    justify-content: center; 
     padding: 20px;
     cursor: pointer;
     color: var(--black);
@@ -42,7 +42,7 @@
   }
   
   .notification-option:last-child {
-    border-right: none; /* Loại bỏ kẻ phân tách cho mục cuối cùng */
+    border-right: none; 
   }
   
   .notification-option:hover {
@@ -63,6 +63,6 @@
     font-weight: bold;
     /* Chữ in đậm */
     position: absolute;
-
-  
+    left: -10%;
+    margin-top: -6.8%;
 }

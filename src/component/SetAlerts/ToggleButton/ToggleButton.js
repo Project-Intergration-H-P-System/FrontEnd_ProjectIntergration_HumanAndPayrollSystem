@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faToggleOn, faToggleOff } from '@fortawesome/free-solid-svg-icons';
+// import React, { useState } from 'react';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faToggleOn, faToggleOff } from '@fortawesome/free-solid-svg-icons';
 
-function ToggleButton({ isToggled, handleToggle }) {
+// function ToggleButton({ isToggled, handleToggle }) {
     
-    return (
-        <div onClick={handleToggle} style={{ cursor: 'pointer' }}>
-            {/* Sử dụng icon cho trạng thái bật/tắt và chỉnh màu sắc */}
-            <FontAwesomeIcon icon={isToggled ? faToggleOn : faToggleOff} style={{ color: isToggled ? 'green' : 'black', width: "100px", height: "30px", marginTop: "25px" }} />
-        </div>
-    );
-}
+//     return (
+//         <div onClick={handleToggle} style={{ cursor: 'pointer' }}>
+//             {/* Sử dụng icon cho trạng thái bật/tắt và chỉnh màu sắc */}
+//             <FontAwesomeIcon icon={isToggled ? faToggleOn : faToggleOff} style={{ color: isToggled ? 'green' : 'black', width: "100px", height: "30px", marginTop: "25px" }} />
+//         </div>
+//     );
+// }
 
-export default ToggleButton;
+// export default ToggleButton;
