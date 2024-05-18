@@ -5,90 +5,19 @@
     display: flex;
 }
 
-
 .container {
     max-width: 1200px;
     margin: 50px auto;
     padding: 20px;
-
 }
 
-.search-container input[type="text"] {
-    width: 30%;
-    height: 15%;
-}
-
-.loca-heading {
-    .search-section {
-        margin-left: auto;
-        max-width: 50%;
-        background: linear-gradient(135deg, #6a5acd, #836fff);
-        color: white;
-        padding: 20px;
-        border-radius: 10px;
-        /* Bo tròn góc */
-        overflow: hidden;
-        /* Ẩn bớt phần góc khi bo tròn */
-    }
-}
-
-.search-section {
+.loca-heading .search-section {
     margin-left: auto;
-    max-width: 100%;
-    background: linear-gradient(135deg, #fed9d9, #ffdfdf);
+    max-width: 50%;
+    background: linear-gradient(#c841b6);
     color: white;
-    padding: 15px;
+    padding: 20px;
     border-radius: 10px;
-    overflow: hidden;
-}
-
-.search-container {
-    max-width: 120%;
-    height: 50px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    align-items: center;
-    background: linear-gradient(to bottom, #3039FF, #D993EA);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    justify-content: space-between;
-    margin-top: 5%;
-}
-
-.search-container>* {
-    flex: 1;
-    margin-right: 15px;
-    /* Khoảng cách giữa các phần tử */
-}
-
-.search-container input {
-    padding: 8px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-}
-
-.search-button-container {
-    margin-left: 12%;
-    /* Đẩy nút Search về phía bên phải */
-}
-
-.btn-search {
-    background-color: #594ea1;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.btn-search:hover {
-    background-color: #45a049;
 }
 
 .table-section {
@@ -97,9 +26,8 @@
     margin-top: 20px;
     overflow-x: auto;
     border-radius: 10px;
-    /* Bo tròn góc */
     overflow: hidden;
-    /* Ẩn bớt phần góc khi bo tròn */
+    background: linear-gradient(135deg, #fed9d9, #ffdfdf);
 }
 
 table {
@@ -110,37 +38,28 @@ table {
 table th,
 table td {
     border: 1px solid #ddd;
-    padding: 10px;
+    padding: 15px;
     text-align: center;
 }
 
 table th {
-    background: linear-gradient(to bottom, #3039FF, #D993EA);
-    color: white;
-    height: 20px;
+    background: #b44b7754;
+    color: black;
+    font-size: 20px; /* Adjusted font size */
 }
 
-/* Highlighted row */
 table tbody tr:nth-child(even) {
     background-color: #f2f2f2;
 }
 
 .heading {
-    margin-left: auto;
     font-size: 24px;
-    /* Kích cỡ chữ to hơn */
     font-weight: bold;
-    /* Chữ in đậm */
-    max-width: 100%;
 }
 
 .note-heading {
-    margin-left: auto;
     font-size: 12px;
-    /* Kích cỡ chữ to hơn */
     opacity: 0.5;
-    /* Làm mờ đi một chút */
-    max-width: 100%;
 }
 
 .placeholder {
@@ -158,20 +77,87 @@ table tbody tr:nth-child(even) {
     left: 20%;
 }
 
-.add-button-container {
-    margin-top: 20px;
-    text-align: center;
+.search-section {
+    max-width: 100%;
+    background: linear-gradient(135deg, #ffcece, #ffdfdf);
+    color: #eb7a7a;
+    padding: 20px;
+    border-radius: 0px;
 }
 
-.add-button {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
+.search-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-items: center;
+    padding: 15px;
+    background: #e87297;
+    border-radius: 6px; /* Thêm bo góc */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    justify-content: flex-start; /* Canh trái tất cả phần tử trừ nút search */
+    position: relative;
+}
+
+
+.search-container input {
+    padding: 10px;
+    border-radius: 0; 
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+.btn-search {
+    background-color: #af2d6e; /* Màu nền */
+    color: white;
+    padding: 12px 24px;
     border: none;
-    border-radius: 5px;
+    border-radius: 5px; /* Bo góc cho nút */
     cursor: pointer;
+    font-size: 16px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    position: absolute; 
+    right: 15px; 
+    top: 50%; 
+    transform: translateY(-50%);
 }
 
-.add-button:hover {
-    background-color: #0056b3;
+.btn-search:hover {
+    background-color: #e83e3e; 
+    transform: translateY(-45%);
+}
+
+.heading {
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+}
+
+.note-heading {
+    font-size: 14px;
+    opacity: 0.8;
+    color: #666;
+
+}
+
+select {
+    padding: 10px;
+    font-size: 12px;
+    border-radius: 5px;
+    border: 1px solid #adaaaa;
+    width: auto;
+    background-color: #fff;
+    cursor: pointer;
+    display: inline-block;
+}
+
+select option {
+    padding: 10px;
+    font-size: 15px;
+    background-color: #fff;
+    color: #333;
+}
+
+select option:hover {
+    background-color: #e992bc;
 }

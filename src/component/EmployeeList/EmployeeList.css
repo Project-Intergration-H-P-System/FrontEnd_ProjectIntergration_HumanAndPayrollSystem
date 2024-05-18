@@ -6,25 +6,83 @@
 }
 
 
-.container {
-    max-width: 1200px;
-    margin: 50px auto;
+.container1 {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-items: center;
     padding: 20px;
+    background: #e87297;
+    border-radius: 6px; /* Thêm bo góc */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    justify-content: flex-start; /* Canh trái tất cả phần tử trừ nút search */
+    position: relative;
+
 }
 
+.container1 > * {
+    flex-grow: 1; /* Chia đều không gian trên hàng */
+    margin-right: 15px; /* Tạo khoảng cách giữa các phần tử */
+}
+
+.container1 > *:last-child {
+    margin-right: 0; /* Loại bỏ khoảng cách của phần tử cuối cùng */
+}
+
+
+
 .input-wrapper {
-    margin-left: auto;
-    width: auto;
-    height: 2.5rem;
-    border: none;
-    border-radius: 10px;
-    padding: 0 15px;
-    box-shadow: 0px 0px 8px #ddd;
-    background-color: white;
+    padding: 10px;
+    font-size: 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    width: 700px;
+    background-color: #fff;
+    cursor: pointer;
     display: flex;
     align-items: center;
-    margin-top: 10px;
 }
+
+.input-wrapper input {
+    background-color: transparent;
+    border: none;
+    height: 100%;
+    font-size: 1.0rem;
+    width: 100%;
+    margin-left: 5px;
+}
+
+.input-wrapper input:focus {
+    outline: none;
+}
+
+.input-wrapper #search-icon {
+    color: royalblue;
+}
+
+.view-detail-button {
+    background-color: #2ad067; /* Màu nền */
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px; /* Bo góc cho nút */
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    position: absolute; 
+    right: 10px; 
+    top: 50%; 
+    transform: translateY(-50%);
+}
+
+.view-detail-button:hover {
+    background-color: #9ccb9b;
+}
+
+.view-detail-button:active {
+    transform: translateY(-45%);
+}
+
 
 input {
     background-color: transparent;
@@ -263,27 +321,7 @@ table tbody tr:nth-child(even) {
     background-color: #b58383;
 }
 
-.view-detail-button {
-    padding: 6px 10px;
-    background-color: #ffffff;
-    color: #ff0073;
-    border: 3px solid #ff0000;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-top: 25px;
-    font-size: 16px;
-}
 
-
-.view-detail-button:hover {
-    background-color: #e4d3d2;
-}
-
-
-.view-detail-button:active {
-    transform: translateY(1px);
-}
 .table-cell {
     padding: 8px;
     text-align: center; /* Căn giữa nội dung trong ô */

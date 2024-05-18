@@ -9,18 +9,8 @@ function SearchEmployeeList({ handleChange }) {
         setName(value);
         handleChange(value);
     };
-
-
     return (
         <div className='heading-page'>
-            <div className='loca-heading'>
-                <div className='heading'>
-                    Employee List
-                </div>
-                <div className='note-heading'>
-                    *Show the list of employee and the functions : add new employee; view, update and delete employee
-                </div>
-            </div>
             <div className="input-wrapper">
                 <FaSearch id="search-icon" />
                 <input

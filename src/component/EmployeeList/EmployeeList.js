@@ -106,20 +106,33 @@ function EmployeeList({ setSelected }) {
 
     return (
         <div className="employee-list">
-            <SearchEmployeeList handleChange={handleSearch} />
 
-            <button
-                className="view-detail-button"
-                onClick={() => setIsOpen(true)}
-            >
-                NEW EMPLOYEE
-            </button>
-            <AddEmployeeList
-                isOpen={isOpen}
-                closeModal={() => setIsOpen(false)}
-                setEmployees={setEmployees}
-                employees={employees}
-            />
+            <div className='loca-heading'>
+                <div className='heading'>
+                    Employee List
+                </div>
+                <div className='note-heading'>
+                    *Show the list of employee and the functions : add new employee; view, update and delete employee
+                </div>
+            </div>
+
+            <div className="container1">
+                <SearchEmployeeList handleChange={handleSearch} />
+
+                <button
+                    className="view-detail-button"
+                    onClick={() => setIsOpen(true)}
+                >
+                    NEW EMPLOYEE
+                </button>
+                <AddEmployeeList
+                    isOpen={isOpen}
+                    closeModal={() => setIsOpen(false)}
+                    setEmployees={setEmployees}
+                    employees={employees}
+                />
+            </div>
+
             {/* View employee dialog */}
             <ViewEmployeeList isOpen={isViewOpen} employee={viewedEmployee} closeModal={handleCloseViewDialog} />
             <UpdateEmployeeList
