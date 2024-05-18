@@ -83,10 +83,10 @@ const ViewEmployeeList = ({ isOpen, employee, closeModal }) => {
                         />
                     </div>
                     <div className="modal-row">
-                        <div className="modal-label">Country:</div>
+                        <div className="modal-label">City:</div>
                         <input
                             type="text"
-                            value={employee.CURRENT_COUNTRY}
+                            value={employee.CURRENT_ADDRESS_2}
                             disabled
                             className="modal-input"
                         />
