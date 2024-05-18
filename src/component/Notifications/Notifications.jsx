@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../UilBell/UilBell.jsx';
 import 'react-toastify/dist/ReactToastify.css';
 import BirthDays from '../../component/SetAlerts/SetAlertBirthday/SetAlerBirthday';
@@ -8,7 +8,15 @@ import "./Notifications.css";
 
 
 const Notifications = () => {
-    const [selectedCategory, setSelectedCategory] = useState(null);
+    const [selectedCategory, setSelectedCategory] = useState('birthday');
+
+    useEffect(() => {
+        // Add 'active' class to the birthday option by default
+        const birthdayOption = document.querySelector('.notification-option[data-category="birthday"]');
+        if (birthdayOption) {
+            birthdayOption.classList.add('active');
+        }
+    }, []);
 
     const handleCategoryClick = (category, event) => {
         setSelectedCategory(category);
@@ -19,7 +27,7 @@ const Notifications = () => {
     }
 
     const handleDropdownClick = (event) => {
-        event.stopPropagation(); // Ngăn chặn sự lan truyền của sự kiện click đến phần tử mẹ
+        event.stopPropagation(); // Prevents event propagation to parent elements
     }
 
     return (
@@ -29,14 +37,14 @@ const Notifications = () => {
             </div>
             <div className="notification-dropdown" onClick={handleDropdownClick}>
                 <div className="notification-options">
-                    <div className="notification-option" onClick={(event) => handleCategoryClick('anniversary', event)}>
+                    <div className="notification-option" data-category="anniversary" onClick={(event) => handleCategoryClick('anniversary', event)}>
                         Anniversary Reminder
                     </div>
-                    <div className="notification-option" onClick={(event) => handleCategoryClick('exceeded', event)}>
+                    <div className="notification-option" data-category="exceeded" onClick={(event) => handleCategoryClick('exceeded', event)}>
                         Exceeded Vacation Days
                     </div>
 
-                    <div className="notification-option" onClick={(event) => handleCategoryClick('birthday', event)}>
+                    <div className="notification-option" data-category="birthday" onClick={(event) => handleCategoryClick('birthday', event)}>
                         Birthday Current Month
                     </div>
                 </div>
