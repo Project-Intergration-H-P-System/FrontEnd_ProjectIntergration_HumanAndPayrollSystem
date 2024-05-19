@@ -36,7 +36,9 @@ const UpdateEmployeeList = ({ id, isOpen, closeModal, setEmployees }) => {
         py: '',
         depart: '',
         hireDate: '',
-        terminationDate: ''
+        terminationDate: '',
+        month: '',
+        totalnumber: ''
     });
 
     const handleChange = (e) => {

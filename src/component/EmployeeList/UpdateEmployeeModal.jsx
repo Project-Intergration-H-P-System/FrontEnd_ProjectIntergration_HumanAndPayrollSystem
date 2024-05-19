@@ -257,6 +257,28 @@ const UpdateEmployeeModal = ({ isOpen, closeModal, updateEmployee, handleChange,
                         />
                     </div>
                     <div className="modal-row">
+                        <div className="modal-label">Month Working:</div>
+                        <input
+                            type="number"
+                            name="month"
+                            value={updateEmployee.month}
+                            placeholder='Enter month(number) '
+                            onChange={handleChange}
+                            className="modal-input"
+                        />
+                    </div>
+                    <div className="modal-row">
+                        <div className="modal-label">Total Number Vacation:</div>
+                        <input
+                            type="number"
+                            name="totalnumber"
+                            value={updateEmployee.totalnumber}
+                            placeholder='Enter totalnumber(number) '
+                            onChange={handleChange}
+                            className="modal-input"
+                        />
+                    </div>
+                    <div className="modal-row">
                         <div className="modal-label">Gender:</div>
                         <select
                             name="gender"
